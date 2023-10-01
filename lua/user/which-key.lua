@@ -1,11 +1,19 @@
 local M = {
   "folke/which-key.nvim",
-  commit = "5224c261825263f46f6771f1b644cae33cd06995",
+  tag = "v1.5.1",
   event = "VeryLazy",
 }
 
 function M.config()
-  require("which-key").setup {}
+  local wk = require("which-key")
+  wk.setup {}
+  wk.register({
+    f = {name = "Telescope"},
+    b = {name = "Buffers"},
+    d = {name = "dap"},
+    l = {name = "lsp"},
+    q = {name = "session"}
+  }, { prefix = "<leader>" })
 end
 
 return M

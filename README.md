@@ -1,49 +1,20 @@
 # A Basic Stable IDE config for Neovim
 
-> Why does this repo exist?
-
-This config attempts to provide a rock solid fully featured starting point for someone new to Neovim, or just tired of maintaining the basic IDE components of their config.
-
-> What makes it "rock solid"?
-
-All the included plugins are pinned to a version that ensures they are compatible and will not update potentially introducing errors into your config. For every Neovim release I will update this repo along with the community to keep it up to date with the newest versions.
-
-As I mentioned, this config is meant as a starting point for people new to Neovim who want a familiar IDE experience. The config has a very simple structure that makes it easy to add new plugins.
-
-### Migration guide to lazy from packer
-
-Now this config uses `lazy.nvim` as a plugin manager, so if you are migrating from packer you should probably remove
-`$HOME/.local/share/nvim` and re-open nvim to re-install the plugins to not face any issues.
-
-## Install Neovim 0.9
-
-You can install Neovim with your package manager e.g. brew, apt, pacman etc.. but remember that when you update your packages Neovim may be upgraded to a newer version.
-
-If you would like to make sure Neovim only updates when you want it to than I recommend installing from source:
-
-**NOTE** Verify the required [build prerequisites](https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites) for your system.
-
-```sh
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout release-0.9
-make CMAKE_BUILD_TYPE=Release
-sudo make install
-```
+> This is a fork of https://github.com/LunarVim/nvim-basic-ide with some extra features, mappings and with updated dependencies
 
 ## Install the config
 
 Make sure to remove or backup your current `nvim` directory
 
 ```sh
-git clone https://github.com/LunarVim/nvim-basic-ide.git ~/.config/nvim
+git clone https://github.com/Pineappletooth/pineapple-neovim-config.git ~/.config/nvim
 ```
 
 Run `nvim` and wait for the plugins to be installed
 
-**NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim)
+**NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim) if not use :TSUpdate
 
-**NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/LunarVim/nvim-basic-ide/tree/master/lua/keymaps.lua)
+**NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/Pineappletooth/pineapple-neovim-config/tree/master/lua/keymaps.lua)
 
 ## Get healthy
 
@@ -68,6 +39,8 @@ First we'll fix copy/paste
   sudo apt install wl-clipboard # for wayland
   ```
 
+- On windows works flawesly
+
 Next we need to install python support (node is optional)
 
 - Neovim python support
@@ -89,6 +62,8 @@ We will also need `ripgrep` for Telescope to work:
   ```sh
   sudo apt install ripgrep
   ```
+
+For windows it's neccesary to download the [binary](https://github.com/BurntSushi/ripgrep/releases) and add it to the path
 
 ---
 
@@ -187,7 +162,7 @@ Heres the wiki for installing new plugins refer to this: [wiki](https://github.c
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
-
+- TODO: needs update
 ---
 
 > The computing scientist's main challenge is not to get confused by the complexities of his own making.

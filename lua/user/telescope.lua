@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868",
+  tag = "0.1.3",
   event = "Bufenter",
   cmd = { "Telescope" },
   dependencies = {
@@ -11,22 +11,28 @@ local M = {
 }
 
 local actions = require "telescope.actions"
-
-M.opts = {
+function a()
+  return "asd"
+end
+function M.config()
+  require('telescope').setup({
   defaults = {
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
-    file_ignore_patterns = { ".git/", "node_modules" },
+    file_ignore_patterns = { ".git/", "node_modules", "dist" },
+    generic_sorter = require('mini.fuzzy').get_telescope_sorter,
+    file_sorter =  require('mini.fuzzy').get_telescope_sorter,
     mappings = {
       i = {
         ["<Down>"] = actions.move_selection_next,
         ["<Up>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        },
       },
-    },
-  },
-}
+    }
+  })
+end
 
 return M

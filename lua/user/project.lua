@@ -1,6 +1,6 @@
 local M = {
   "ahmedkhalf/project.nvim",
-  commit = "685bc8e3890d2feb07ccf919522c97f7d33b94e4",
+  commit = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb",
   dependencies = {
     {
       "nvim-telescope/telescope.nvim",

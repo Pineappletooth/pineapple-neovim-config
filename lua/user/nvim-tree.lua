@@ -1,7 +1,7 @@
 local M = {
-  "kyazdani42/nvim-tree.lua",
-  commit = "f5d970d4506f385b29534252d8c15a782fa53034",
-  event = "VimEnter",
+  "nvim-tree/nvim-tree.lua",
+  commit = "113e0950c88b81b01d253d8f3da17bbd0e6716bb",
+  lazy = false,
 }
 
 local function on_attach(bufnr)
@@ -15,6 +15,7 @@ local function on_attach(bufnr)
   --
   -- BEGIN_DEFAULT_ON_ATTACH
   vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts "CD")
+  vim.keymap.set("n", "<C-}>", api.tree.change_root_to_node, opts "CD")
   vim.keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts "Open: In Place")
   vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts "Info")
   vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts "Rename: Omit Filename")
@@ -34,13 +35,17 @@ local function on_attach(bufnr)
   vim.keymap.set("n", "c", api.fs.copy.node, opts "Copy")
   vim.keymap.set("n", "C", api.tree.toggle_git_clean_filter, opts "Toggle Git Clean")
   vim.keymap.set("n", "[c", api.node.navigate.git.prev, opts "Prev Git")
+  vim.keymap.set("n", "{c", api.node.navigate.git.prev, opts "Prev Git")
   vim.keymap.set("n", "]c", api.node.navigate.git.next, opts "Next Git")
+  vim.keymap.set("n", "}c", api.node.navigate.git.next, opts "Next Git")
   vim.keymap.set("n", "d", api.fs.remove, opts "Delete")
   vim.keymap.set("n", "D", api.fs.trash, opts "Trash")
   vim.keymap.set("n", "E", api.tree.expand_all, opts "Expand All")
   vim.keymap.set("n", "e", api.fs.rename_basename, opts "Rename: Basename")
   vim.keymap.set("n", "]e", api.node.navigate.diagnostics.next, opts "Next Diagnostic")
+  vim.keymap.set("n", "}e", api.node.navigate.diagnostics.next, opts "Next Diagnostic")
   vim.keymap.set("n", "[e", api.node.navigate.diagnostics.prev, opts "Prev Diagnostic")
+  vim.keymap.set("n", "{e", api.node.navigate.diagnostics.prev, opts "Prev Diagnostic")
   vim.keymap.set("n", "F", api.live_filter.clear, opts "Clean Filter")
   vim.keymap.set("n", "f", api.live_filter.start, opts "Filter")
   vim.keymap.set("n", "g?", api.tree.toggle_help, opts "Help")
@@ -82,9 +87,15 @@ function M.config()
   -- local tree_cb = require("nvim-tree.config").nvim_tree_callback
   require("nvim-tree").setup {
     on_attach = on_attach,
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     update_focused_file = {
       enable = true,
-      update_cwd = true,
+      -- update_root = true
+      --update_cwd = true,
+    },
+    git = {
+      enable = false,
     },
     renderer = {
       icons = {

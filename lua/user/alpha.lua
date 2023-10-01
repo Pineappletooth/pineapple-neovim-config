@@ -1,7 +1,7 @@
 local M = {
   "goolord/alpha-nvim",
   event = "VimEnter",
-  commit = "dafa11a6218c2296df044e00f88d9187222ba6b0",
+  commit = "234822140b265ec4ba3203e3e0be0e0bb826dff5",
 }
 
 function M.config()
@@ -19,13 +19,14 @@ function M.config()
     dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
     dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
     dashboard.button("p", " " .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
+    dashboard.button("s", "S " .. " Restore last session", [[<cmd>lua require("persistence").load({ last = true })<cr> <cmd>NvimTreeFocus<cr> <cmd>b#<CR>]]),
     dashboard.button("r", "󰄉 " .. " Recent files", ":Telescope oldfiles <CR>"),
     dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
     dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
   }
   local function footer()
-    return "chrisatmachine.com"
+    return "custom minimal ide"
   end
 
   dashboard.section.footer.val = footer()

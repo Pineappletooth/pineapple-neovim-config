@@ -1,11 +1,11 @@
 local M = {
-  "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
   event = "BufReadPre",
-  commit = "60b4a7167c79c7d04d1ff48b55f2235bf58158a7",
+  commit = "f39f627bbdfb33cc4ae4a95b4708e7dba7b9aafc",
   dependencies = {
     {
       "nvim-lua/plenary.nvim",
-      commit = "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
+      commit = "9ce85b0f7dcfe5358c0be937ad23e456907d410b",
     },
   },
 }

@@ -37,8 +37,8 @@ local M = {
     },
   },
   event = {
-    "InsertEnter",
-    "CmdlineEnter",
+    "insertenter",
+    "cmdlineenter",
   },
 }
 
@@ -53,33 +53,41 @@ function M.config()
   end
 
   local kind_icons = {
-    Text = "󰉿",
-    Method = "m",
-    Function = "󰊕",
-    Constructor = "",
-    Field = "",
-    Variable = "󰆧",
-    Class = "󰌗",
-    Interface = "",
-    Module = "",
-    Property = "",
-    Unit = "",
-    Value = "󰎠",
-    Enum = "",
-    Keyword = "󰌋",
-    Snippet = "",
-    Color = "󰏘",
-    File = "󰈙",
-    Reference = "",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "󰇽",
-    Struct = "",
-    Event = "",
-    Operator = "󰆕",
-    TypeParameter = "󰊄",
-    Codeium = "󰚩",
-    Copilot = "",
+      Array = " ",
+      Boolean = " ",
+      Class = " ",
+      Color = " ",
+      Constant = " ",
+      Constructor = " ",
+      Copilot = " ",
+      Enum = " ",
+      EnumMember = " ",
+      Event = " ",
+      Field = " ",
+      File = " ",
+      Folder = " ",
+      Function = " ",
+      Interface = " ",
+      Key = " ",
+      Keyword = " ",
+      Method = " ",
+      Module = " ",
+      Namespace = " ",
+      Null = " ",
+      Number = " ",
+      Object = " ",
+      Operator = " ",
+      Package = " ",
+      Property = " ",
+      Reference = " ",
+      Snippet = " ",
+      String = " ",
+      Struct = " ",
+      Text = " ",
+      TypeParameter = " ",
+      Unit = " ",
+      Value = " ",
+      Variable = " ",
   }
 
   cmp.setup {
@@ -131,9 +139,15 @@ function M.config()
       }),
     },
     formatting = {
-      fields = { "kind", "abbr", "menu" },
+      fields = { "abbr", "kind" },
       format = function(entry, vim_item)
-        vim_item.kind = kind_icons[vim_item.kind]
+        local MAX_LABEL_WIDTH = 20
+        local label = vim_item.abbr
+        local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+        if truncated_label ~= label then
+          vim_item.abbr = truncated_label .. "…"
+        end
+        vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
         vim_item.menu = ({
           nvim_lsp = "",
           nvim_lua = "",

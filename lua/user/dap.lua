@@ -1,6 +1,6 @@
 local M = {
   "mfussenegger/nvim-dap",
-  commit = "6b12294a57001d994022df8acbe2ef7327d30587",
+  commit = "b3d4408e29d924fe130c9397a7c3b3630b3ea671",
   event = "VeryLazy",
 }
 
@@ -57,9 +57,10 @@ end
 M = {
   "ravenxrz/DAPInstall.nvim",
   commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de",
+  lazy = false,
   config = function()
-    require("dap_install").setup {}
-    require("dap_install").config("python", {})
+    require("dap-install").setup({})
+    require("dap-install").config("python", {})
   end,
 }
 

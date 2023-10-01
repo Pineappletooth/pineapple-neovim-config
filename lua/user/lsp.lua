@@ -1,12 +1,12 @@
 local M = {
   "neovim/nvim-lspconfig",
-  commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
+  commit = "eb1b53162755888ff75e495797071644d983bff7",
   lazy = false,
   event = { "BufReadPre" },
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
+      commit = "44b16d11215dce86f253ce0c30949813c0a90765",
     },
   },
 }
@@ -72,7 +72,11 @@ function M.config()
 
   local config = {
     -- disable virtual text
-    virtual_text = false,
+    virtual_text = {
+      spacing = 4,
+      source = "if_many",
+      prefix = "●",
+    },
     -- show signs
     signs = {
       active = signs,

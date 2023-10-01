@@ -1,6 +1,6 @@
 local M = {
   "rcarriga/nvim-dap-ui",
-  commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
+  tag = "v3.9.1",
   event = "VeryLazy",
   dependencies = {
     {
