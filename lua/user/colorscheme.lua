@@ -10,7 +10,9 @@ local M = {
 -- colorscheme tokyonight-day
 -- colorscheme tokyonight-moon
 function M.config()
+  pcall(vim.cmd.colorscheme, M.name)
   require("tokyonight").setup({
+    style = "night"
   --   on_highlights = function(highlights, colors)
   --     highlights.MiniIndentscopeSymbol = {
   --     fg = colors.purple,
