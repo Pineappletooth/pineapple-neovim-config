@@ -55,11 +55,24 @@ keymap("v", ">", ">gv", opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
+-- Mini-Files
+
+keymap("n", "<leader>m", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", {desc = "MiniFiles current file"})
+keymap("n", "<leader>M", ":lua MiniFiles.open(vim.loop.cwd())<CR>", {desc = "MiniFiles cwd"})
+
 -- Telescope
 keymap("n", "<leader>ft", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ff", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fF", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
+keymap("n", "<leader>fD", ":Telescope diagnostics", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fl", ":Telescope lsp_references<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", {desc = "Recent", silent = true})
+keymap("n", "<leader>fm", ":Telescope marks<CR>", {desc = "marks", silent = true})
+keymap("n", "<leader>fs", ":Telescope git_status<CR>", opts)
+keymap("n", "<leader>fc", ":Telescope git_commits<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -82,6 +95,7 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+keymap("n", "<leader>ln", "<cmd>Navbuddy<cr>",opts)
 
 keymap("n", "<leader><space>", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>bl", "<cmd>bl<CR>", {desc = "next buffer"})
