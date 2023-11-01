@@ -11,6 +11,7 @@ local M = {
       },
     },
   },
+  enabled = true
 }
 
 function M.config()

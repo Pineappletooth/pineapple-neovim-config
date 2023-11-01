@@ -19,5 +19,6 @@ function M.config()
   --   }
   --   end
   })
+  require("tokyonight").load()
 end
 return M

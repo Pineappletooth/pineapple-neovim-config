@@ -40,6 +40,9 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
 -- Better paste
 keymap("v", "p", "P", opts)
+keymap("i", "<C-v>", "C-r>+", opts)
+keymap("n", "<C-v>", "p", opts)
+keymap("c", "<C-v>", "<C-r>+",opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -50,6 +53,9 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+--search without advance
+keymap("n","<leader>*", "*N", opts)
+keymap("n", "<leader>n","<cmd>set number!<CR>",{desc="toggle numbers"})
 -- Plugins --
 
 -- NvimTree

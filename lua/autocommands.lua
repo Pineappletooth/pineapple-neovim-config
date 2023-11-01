@@ -76,4 +76,4 @@ vim.api.nvim_create_autocmd("CursorHold", {
 })
 --vim.opt.listchars = { tab = "⇥ ",eol = "↲",nbsp = "␣",trail = "•",extends = "⟩" }
 --vim.cmd[[set list]]
-vim.cmd[[colorscheme tokyonight-night]]
+--vim.cmd[[colorscheme tokyonight-night]]
