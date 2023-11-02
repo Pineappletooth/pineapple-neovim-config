@@ -14,7 +14,7 @@ function M.config()
       prompt_prefix = " ",
       selection_caret = " ",
       path_display = { "smart" },
-      file_ignore_patterns = { ".git/", "node_modules", "dist", "*-lock.*" },
+      file_ignore_patterns = { ".git", "node_modules", "dist", "*-lock.*" },
       mappings = {
         i = {
           ["<Down>"] = actions.move_selection_next,
@@ -25,7 +25,7 @@ function M.config()
       },
     }
   })
-  require("telescope").load_extension("fzf")
+print("")
 end
 
 return M
