@@ -25,7 +25,7 @@ function M.config()
       },
     }
   })
-print("")
+
 end
 
 return M
