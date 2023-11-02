@@ -1,26 +1,20 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.3",
+  tag = "0.1.4",
   lazy = false,
-  cmd = { "Telescope" },
-  dependencies = {
-    {
-      "ahmedkhalf/project.nvim",
-    },
-  },
+  cmd = { "Telescope" }
 }
 
-local actions = require "telescope.actions"
-function a()
-  return "asd"
-end
+
+
 function M.config()
+  local actions = require "telescope.actions"
   require('telescope').setup({
     defaults = {
       prompt_prefix = " ",
       selection_caret = " ",
       path_display = { "smart" },
-      file_ignore_patterns = { ".git/", "node_modules", "dist" },
+      file_ignore_patterns = { ".git/", "node_modules", "dist", "*-lock.*" },
       mappings = {
         i = {
           ["<Down>"] = actions.move_selection_next,

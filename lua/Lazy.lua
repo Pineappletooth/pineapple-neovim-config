@@ -16,7 +16,7 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 --vim.g.python3_host_prog = vim.fn.stdpath("config") .. '/.venv/Scripts/python.exe'
 require("lazy").setup("user", {
   install = { colorscheme = { require("user.colorscheme").name } },
-  defaults = { lazy = false, version = "10.15.0" },
+  defaults = { lazy = false, version = nil },
   ui = { wrap = "true" },
   change_detection = { enabled = true },
   debug = false,

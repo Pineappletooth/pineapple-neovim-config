@@ -1,7 +1,7 @@
 local M = {
   "nvim-lualine/lualine.nvim",
-  commit = "45e27ca739c7be6c49e5496d14fcf45a303c3a63",
-  event = { "VimEnter", "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
+  commit = "2248ef254d0a1488a72041cfb45ca9caada6d994",
+  event = { "VeryLazy" },
 }
 
 function M.config()

@@ -1,6 +1,6 @@
 local M = {
   "akinsho/toggleterm.nvim",
-  commit = "61e8ad370d4da5d84c77e31671027bc094ac06ca",
+  commit = "c80844fd52ba76f48fabf83e2b9f9b93273f418d",
   event = "VeryLazy",
 }
 

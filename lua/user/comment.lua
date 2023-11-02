@@ -1,6 +1,6 @@
 local M = {
   "numToStr/Comment.nvim",
-  tag = "v0.8.0",
+  commit = "0236521ea582747b58869cb72f70ccfa967d2e89",
   event = {"BufRead", "BufNewFile"},
 }
 

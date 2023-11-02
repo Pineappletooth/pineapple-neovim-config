@@ -1,6 +1,6 @@
 local M = {
   "folke/which-key.nvim",
-  tag = "v1.5.1",
+  tag = "v1.6.0",
   event = "VeryLazy",
 }
 
