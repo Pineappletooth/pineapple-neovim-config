@@ -56,22 +56,31 @@ function M.config()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch" },
-      lualine_c = { diagnostics },
+      lualine_c = {
+        diagnostics,
+        {
+          require("dr-lsp").lspCount,
+          fmt = function(str)
+            local definitions, references = str:match("LSP: (.-) (.+)")
+
+            -- Check if both parts are not nil
+            if definitions and references then
+              -- Format the extracted parts
+              local formattedString = "LSP: " .. definitions .. "  " .. references
+              -- Print the formatted string
+              return formattedString
+            else
+              -- Handle the case where the pattern doesn't match the input
+              return nil
+            end
+          end
+        },
+        { require("dr-lsp").lspProgress },
+      },
       lualine_x = { diff, spaces, "encoding", filetype },
       lualine_y = { location },
       lualine_z = { "progress" },
     },
-    winbar = {
-			lualine_c = {
-        {
-			    "navic",
-				  color_correction = nil,
-				  navic_opts = {
-            highlight = true
-          }
-			  }
-      }
-		}
   }
 end
 
