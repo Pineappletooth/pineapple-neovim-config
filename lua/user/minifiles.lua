@@ -11,6 +11,9 @@ function M.config()
       preview = true,
       width_focus = 30,
       width_preview = 30,
+    },
+    mappings = {
+      go_in_plus = "<CR>"
     }
   })
   vim.api.nvim_create_autocmd("User", {

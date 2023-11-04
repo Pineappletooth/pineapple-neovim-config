@@ -12,7 +12,12 @@ local M = {
 function M.config()
   pcall(vim.cmd.colorscheme, M.name)
   require("tokyonight").setup({
-    style = "night"
+    style = "night",
+    on_highlights = function(hl, c)
+      hl.DiagnosticUnnecessary = {
+        fg = c.dark5,
+      }
+    end,
   --   on_highlights = function(highlights, colors)
   --     highlights.MiniIndentscopeSymbol = {
   --     fg = colors.purple,
