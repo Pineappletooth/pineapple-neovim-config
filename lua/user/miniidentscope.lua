@@ -31,7 +31,8 @@ function M.config()
     symbol = "│",
     options = { try_as_border = true },
     draw = {
-      animation = require('mini.indentscope').gen_animation.none()
+      animation = require('mini.indentscope').gen_animation.none(),
+      priority = 110
     },
     mappings = {
       -- Textobjects

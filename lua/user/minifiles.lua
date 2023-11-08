@@ -1,6 +1,6 @@
 local M = {
   'echasnovski/mini.files',
-  tag = 'v0.10.0',
+  commit = '3f8af5f9e4bbedbacbade760531464c0d679490d'
 }
 function M.config()
   require("mini.files").setup( {

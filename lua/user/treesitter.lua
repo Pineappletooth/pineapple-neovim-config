@@ -15,7 +15,12 @@ local M = {
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
       commit = "e69a504baf2951d52e1f1fbb05145d43f236cbf1",
-    }
+    },
+    {
+      "RRethy/nvim-treesitter-textsubjects",
+      commit = "011c09784f1a95cf469a48c1993b664190440391",
+    },
+
   },
 }
 function M.config()
@@ -76,7 +81,17 @@ function M.config()
         swap_previous = {
           ["<leader>A"] = "@parameter.inner",
         }
-      }
+      },
+      textsubjects = {
+        enable = true,
+        prev_selection = ',', -- (Optional) keymap to select the previous selection
+        keymaps = {
+          ['.'] = 'textsubjects-smart',
+          [';'] = 'textsubjects-container-outer',
+          ['i;'] = 'textsubjects-container-inner',
+          ['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
+        },
+      },
     }
   }
 end

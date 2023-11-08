@@ -17,6 +17,9 @@ function M.config()
       hl.DiagnosticUnnecessary = {
         fg = c.dark5,
       }
+      hl.MiniIndentscopeSymbolOff = {
+        fg = c.cyan
+      }
     end,
   --   on_highlights = function(highlights, colors)
   --     highlights.MiniIndentscopeSymbol = {

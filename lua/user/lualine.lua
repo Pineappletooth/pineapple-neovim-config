@@ -5,6 +5,7 @@ local M = {
 }
 
 function M.config()
+  local icons = require("icons")
   local status_ok, lualine = pcall(require, "lualine")
   if not status_ok then
     return
@@ -18,15 +19,14 @@ function M.config()
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
-    symbols = { error = " ", warn = " " },
+    symbols = { error = icons.diagnostics.BoldError.." ", warn = icons.diagnostics.BoldWarning.." " },
     colored = false,
     always_visible = true,
   }
-
   local diff = {
     "diff",
     colored = false,
-    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+    symbols = { added = icons.git.LineAdded, modified = icons.git.LineModified, removed = icons.git.LineModified }, -- changes diff symbols
     cond = hide_in_width,
   }
 
