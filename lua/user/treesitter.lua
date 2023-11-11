@@ -65,6 +65,8 @@ function M.config()
           ["ac"] = "@class.outer",
           ["ia"] = "@assignment.inner",
           ["aa"] = "@assignment.outer",
+          ["ab"] = "@block.outer",
+          ["ib"] = "@block.inner",
           ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
           ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
         },
@@ -84,17 +86,18 @@ function M.config()
           ["<leader>A"] = "@parameter.inner",
         }
       },
-      textsubjects = {
-        enable = true,
-        prev_selection = ',', -- (Optional) keymap to select the previous selection
-        keymaps = {
-          ['.'] = 'textsubjects-smart',
-          [';'] = 'textsubjects-container-outer',
-          ['i;'] = 'textsubjects-container-inner',
-          ['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
-        },
+    },
+    textsubjects = {
+      enable = true,
+      prev_selection = ',', -- (Optional) keymap to select the previous selection
+      keymaps = {
+        ['.'] = 'textsubjects-smart',
+        [','] = 'textsubjects-container-outer',
+        -- ['i,'] = 'textsubjects-container-inner',
+        ['i,'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
       },
-    }
+    },
+
   }
 end
 
