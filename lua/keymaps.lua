@@ -17,6 +17,7 @@ vim.g.mapleader = " "
 
 -- Normal --
 -- Better window navigation
+-- TODO: Investigate conflicting keymap
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -33,18 +34,23 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+keymap("n", "<leader>c", "<cmd>nohlsearch<CR>", { desc = "Co highlight" })
 
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
--- Better paste
-keymap("v", "p", "P", opts)
-keymap("i", "<C-v>", "C-r>+", opts)
-keymap("n", "<C-v>", "p", opts)
-keymap("c", "<C-v>", "<C-r>+",opts)
+-- Better copy paste
+keymap('n', '<C-s>', ':w<CR>') -- Save
+keymap('v', '<C-c>', '"+y') -- Copy
+keymap('n', '<C-v>', '"+P') -- Paste normal mode
+keymap('v', '<C-v>', '"+P') -- Paste visual mode
+keymap('c', '<C-v>', '<C-R>+') -- Paste command mode
+keymap('i', '<C-v>', '<ESC>l"+Pli') -- Paste insert mode-- Insert --
+keymap('', '<C-v>', '+p<CR>', { noremap = true, silent = true})
+keymap('!', '<C-v>', '<C-R>+', { noremap = true, silent = true})
+keymap('t', '<C-v>', '<C-R>+', { noremap = true, silent = true})
+keymap('v', '<C-v>', '<C-R>+', { noremap = true, silent = true})
 
--- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
 
@@ -54,8 +60,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 --search without advance
-keymap("n","<leader>*", "*N", opts)
-keymap("n", "<leader>n","<cmd>set number!<CR>",{desc="toggle numbers"})
+keymap("n", "<leader>*", "*N", opts)
+keymap("n", "<leader>n", "<cmd>set number!<CR>", { desc = "toggle numbers" })
 -- Plugins --
 
 -- NvimTree
@@ -63,8 +69,8 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Mini-Files
 
-keymap("n", "<leader>m", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", {desc = "MiniFiles current file"})
-keymap("n", "<leader>M", ":lua MiniFiles.open(vim.loop.cwd())<CR>", {desc = "MiniFiles cwd"})
+keymap("n", "<leader>m", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "MiniFiles current file" })
+keymap("n", "<leader>M", ":lua MiniFiles.open(vim.loop.cwd())<CR>", { desc = "MiniFiles cwd" })
 
 -- Telescope
 keymap("n", "<leader>ft", ":Telescope find_files<CR>", opts)
@@ -75,14 +81,14 @@ keymap("n", "<leader>fD", ":Telescope diagnostics", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fl", ":Telescope lsp_references<CR>", opts)
-keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", {desc = "Recent", silent = true})
-keymap("n", "<leader>fm", ":Telescope marks<CR>", {desc = "marks", silent = true})
+keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", { desc = "Recent", silent = true })
+keymap("n", "<leader>fm", ":Telescope marks<CR>", { desc = "marks", silent = true })
 keymap("n", "<leader>fs", ":Telescope git_status<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope git_commits<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-keymap("n", "<leader>gp", "<cmd>cd %:h <CR>",{desc ="Change CWD to current", silent = true})
+keymap("n", "<leader>gp", "<cmd>cd %:h <CR>", { desc = "Change CWD to current", silent = true })
 
 -- Comment
 keymap("n", "<leader>}", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
@@ -102,44 +108,47 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 -- Trouble
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
 keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
-keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>" , opts)
+keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
 keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
 
 -- Lsp
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
-keymap("n", "<leader>ln", "<cmd>Navbuddy<cr>",opts)
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", {desc = "Format line"})
+keymap("n", "<leader>ln", "<cmd>Navbuddy<cr>", opts)
 
 keymap("n", "<leader><space>", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>bl", "<cmd>bl<CR>", {desc = "next buffer"})
-keymap("n", "<leader>bp", "<cmd>bp<CR>", {desc = "previous buffer", silent = true})
-keymap("n","<leader>bd","<cmd>BufDel<CR>",{desc ="delete current buffer", silent = true})
-keymap("n","<leader>bD","<cmd>BufDelAll<CR>",{desc ="delete all buffer", silent = true})
-keymap("n","<leader>bb","<cmd>BufDelOthers<CR>",{desc ="delete all except buffer current one", silent = true})
-keymap("n", "<leader>h", "<cmd>WhichKey<CR>", {desc = "show all keymaps", silent = true})
-keymap("n", "<leader>r", "<cmd>set rnu!<CR>", {desc ="Toggle RNU"})
-keymap("n","<leader>le","<cmd>lua vim.diagnostic.open_float()<CR>", {silent = true})
-keymap("n","<leader>s","<cmd>Telescope live_grep<CR>", {desc = "Live grep"})
-keymap("n","<leader>fs","<cmd>Telescope grep_string<CR>", {desc = "Grep string"})
-keymap("n","<leader>x","<cmd>noh<CR>", {desc = "End search"})
-keymap("n", "<leader>/","<cmd>Telescope live_grep<CR>", {desc = "Live grep"})
+keymap("n", "<leader>bl", "<cmd>bl<CR>", { desc = "next buffer" })
+keymap("n", "<leader>bp", "<cmd>bp<CR>", { desc = "previous buffer", silent = true })
+keymap("n", "<leader>bd", "<cmd>BufDel<CR>", { desc = "delete current buffer", silent = true })
+keymap("n", "<leader>bD", "<cmd>BufDelAll<CR>", { desc = "delete all buffer", silent = true })
+keymap("n", "<leader>bb", "<cmd>BufDelOthers<CR>", { desc = "delete all except buffer current one", silent = true })
+keymap("n", "<leader>h", "<cmd>WhichKey<CR>", { desc = "show all keymaps", silent = true })
+keymap("n", "<leader>r", "<cmd>set rnu!<CR>", { desc = "Toggle RNU" })
+keymap("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true })
+keymap("n", "<leader>s", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
+keymap("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", { desc = "Grep string" })
+keymap("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
 
 -- restore the session for the current directory
-keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr> <cmd>NvimTreeFocus<cr> <cmd>b#<CR>]], {desc = "restore current directory session"})
+keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]],
+  { desc = "restore current directory session" })
 -- restore the last session
-keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr> <cmd>NvimTreeFocus<cr> <cmd>b#<CR>]], {desc = "restore last session"})
+keymap("n", "<leader>ql",
+  [[<cmd>lua require("persistence").load({ last = true })<cr>]],
+  { desc = "restore last session" })
 -- stop Persistence => session won't be saved on exit
-keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], {desc = "disable session saving"})
-keymap("n", "]h", "<cmd>Gitsigns next_hunk", { desc ="Next Hunk"})
-keymap("n", "[h", "<cmd>Gitsigns prev_hunk", { desc ="Prev Hunk"})
-keymap({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc ="Stage Hunk"})
-keymap({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc ="Reset Hunk"})
-keymap("n", "<leader>ghS", "<cmd>Gitsigns stage_buffer", { desc ="Stage Buffer"})
-keymap("n", "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk", { desc ="Undo Stage Hunk"})
-keymap("n", "<leader>ghR", "<cmd>Gitsigns reset_buffer", { desc ="Reset Buffer"})
-keymap("n", "<leader>ghp", "<cmd>Gitsigns preview_hunk", { desc ="Preview Hunk"})
-keymap("n", "<leader>ghb", "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", { desc ="Blame Line"})
-keymap("n", "<leader>ghd", "<cmd>Gitsigns diffthis", { desc ="Diff This"})
-keymap("n", "<leader>ghD", "<cmd>lua require'gitsigns'.diffthis('~')<CR>", { desc ="Diff This ~"})
-keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc ="GitSigns Select Hunk"})
+keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], { desc = "disable session saving" })
+keymap("n", "]h", "<cmd>Gitsigns next_hunk", { desc = "Next Hunk" })
+keymap("n", "[h", "<cmd>Gitsigns prev_hunk", { desc = "Prev Hunk" })
+keymap({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc = "Stage Hunk" })
+keymap({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc = "Reset Hunk" })
+keymap("n", "<leader>ghS", "<cmd>Gitsigns stage_buffer", { desc = "Stage Buffer" })
+keymap("n", "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk", { desc = "Undo Stage Hunk" })
+keymap("n", "<leader>ghR", "<cmd>Gitsigns reset_buffer", { desc = "Reset Buffer" })
+keymap("n", "<leader>ghp", "<cmd>Gitsigns preview_hunk", { desc = "Preview Hunk" })
+keymap("n", "<leader>ghb", "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", { desc = "Blame Line" })
+keymap("n", "<leader>ghd", "<cmd>Gitsigns diffthis", { desc = "Diff This" })
+keymap("n", "<leader>ghD", "<cmd>lua require'gitsigns'.diffthis('~')<CR>", { desc = "Diff This ~" })
+keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "GitSigns Select Hunk" })
+

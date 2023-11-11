@@ -9,7 +9,8 @@ M.servers = {
   "bashls",
   "jsonls",
   "yamlls",
-  "eslint"
+  "eslint",
+  "cssmodules_ls"
 }
 
 return M
