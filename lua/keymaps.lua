@@ -57,6 +57,7 @@ keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 keymap("n", "vv", "<C-v>", opts)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -86,7 +87,7 @@ keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fl", ":Telescope lsp_references<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", { desc = "Recent", silent = true })
-keymap("n", "<leader>fo", ":Telescope resume<CR>", { desc = "Resume last search", silent = true })
+keymap("n", "<leader>fr", ":Telescope resume<CR>", { desc = "Resume last search", silent = true })
 keymap("n", "<leader>fm", ":Telescope marks<CR>", { desc = "marks", silent = true })
 keymap("n", "<leader>fgs", ":Telescope git_status<CR>", opts)
 keymap("n", "<leader>fgc", ":Telescope git_commits<CR>", opts)
