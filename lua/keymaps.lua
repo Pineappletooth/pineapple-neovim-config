@@ -164,3 +164,5 @@ keymap("n", "<leader>ghd", "<cmd>Gitsigns diffthis", { desc = "Diff This" })
 keymap("n", "<leader>ghD", "<cmd>lua require'gitsigns'.diffthis('~')<CR>", { desc = "Diff This ~" })
 keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "GitSigns Select Hunk" })
 
+
+
