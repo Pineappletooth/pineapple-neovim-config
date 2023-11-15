@@ -22,6 +22,7 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<leader>w", "<C-w>w", {desc="cycle through windows"})
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -61,18 +62,20 @@ keymap("v", ">", ">gv", opts)
 
 --search without advance
 keymap("n", "<leader>*", "*N", opts)
+
 keymap("n", "<leader>n", "<cmd>set number!<CR>", { desc = "toggle numbers" })
+
+
 -- Plugins --
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Mini-Files
-
 keymap("n", "<leader>m", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "MiniFiles current file" })
 keymap("n", "<leader>M", ":lua MiniFiles.open(vim.loop.cwd())<CR>", { desc = "MiniFiles cwd" })
 
--- Telescope
+-- Telescope <C-q> to send search to quickfix
 keymap("n", "<leader>ft", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fF", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope current_buffer_fuzzy_find<CR>", opts)
@@ -81,14 +84,18 @@ keymap("n", "<leader>fD", ":Telescope diagnostics", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fl", ":Telescope lsp_references<CR>", opts)
-keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", { desc = "Recent", silent = true })
+keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", { desc = "Recent", silent = true })
+keymap("n", "<leader>fo", ":Telescope resume<CR>", { desc = "Resume last search", silent = true })
 keymap("n", "<leader>fm", ":Telescope marks<CR>", { desc = "marks", silent = true })
-keymap("n", "<leader>fs", ":Telescope git_status<CR>", opts)
-keymap("n", "<leader>fc", ":Telescope git_commits<CR>", opts)
+keymap("n", "<leader>fgs", ":Telescope git_status<CR>", opts)
+keymap("n", "<leader>fgc", ":Telescope git_commits<CR>", opts)
 
 -- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-keymap("n", "<leader>gp", "<cmd>cd %:h <CR>", { desc = "Change CWD to current", silent = true })
+keymap("n", "<leader>Gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+keymap("n", "<leader>Gd", "<cmd>Gitsigns toggle_current_line_blame<CR>", {desc = "toggle_current_line_blame", silent = true})
+
+-- Go to
+keymap("n", "<leader>gc", "<cmd>cd %:h <CR>", { desc = "Change CWD to current"})
 
 -- Comment
 keymap("n", "<leader>}", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
@@ -105,13 +112,16 @@ keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
--- Trouble
-keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
-keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
-keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
-keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
-keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
-keymap("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
+-- quickfix
+keymap("n", "<leader>xx", "<cmd>cclose<cr>", opts)
+keymap("n", "<leader>xq", "<cmd>copen<cr>", opts)
+keymap("n", "<leader>xn", "<cmd>cnewer<cr>", opts)
+keymap("n", "<leader>xo", "<cmd>colder<cr>", opts)
+keymap("n", "<leader>xd", "<cmd>lua vim.diagnostic.setqflist()<cr>", opts)
+keymap("n", "<leader>xt", "<cmd>TodoQuickFix<cr>", opts)
+keymap("n", "<leader>xl", "<cmd>lopen<cr>", opts)
+keymap("n", "g}", "<cmd>cnext<cr>", opts)
+keymap("n", "g{", "<cmd>cprev<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", {desc = "Format line"})

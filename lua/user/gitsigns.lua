@@ -17,9 +17,9 @@ function M.config()
       changedelete = { text = "▎" },
       untracked = { text = "┋" },
     },
-    current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
-      delay = 500,
+      delay = 1000,
     },
   })
 end

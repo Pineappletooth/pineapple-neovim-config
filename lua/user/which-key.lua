@@ -6,14 +6,16 @@ local M = {
 
 function M.config()
   local wk = require("which-key")
-  wk.setup {}
+  wk.setup {
+    triggers_nowait = {}
+  }
   wk.register({
     f = {name = "Telescope"},
     b = {name = "Buffers"},
     d = {name = "dap"},
     l = {name = "lsp"},
     q = {name = "session"}
-  }, { prefix = "<leader>" })
+  }, { prefix = "<leader>",  })
 end
 
 return M

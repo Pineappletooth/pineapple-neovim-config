@@ -1,12 +1,15 @@
 local M = {
   "neovim/nvim-lspconfig",
   commit = "d0467b9574b48429debf83f8248d8cee79562586",
-  lazy = false,
   event = { "BufReadPre", "BufNewFile"},
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
       commit = "44b16d11215dce86f253ce0c30949813c0a90765",
+    },
+    {
+       "ray-x/lsp_signature.nvim",
+       commit = "1fba8f477b8c65add5e07cda0504cf7f81a9a4ab"
     },
     {
       "SmiteshP/nvim-navbuddy",
@@ -15,13 +18,13 @@ local M = {
         {
           "SmiteshP/nvim-navic",
           commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
-            opts = { lsp = { auto_attach = true } }
+          opts = { lsp = { auto_attach = true } }
         },
         {
           "MunifTanjim/nui.nvim",
           commit = "c0c8e347ceac53030f5c1ece1c5a5b6a17a25b32"
         }
-            },
+      },
       opts = { lsp = { auto_attach = true } }
     }
   },
@@ -29,7 +32,9 @@ local M = {
 
 function M.config()
   local cmp_nvim_lsp = require "cmp_nvim_lsp"
+  require "lsp_signature".setup({
 
+  })
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
@@ -41,7 +46,7 @@ function M.config()
     keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    --keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
