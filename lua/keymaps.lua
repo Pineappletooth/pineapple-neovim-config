@@ -56,6 +56,7 @@ keymap('v', '<C-v>', '<C-R>+', { noremap = true, silent = true})
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
+keymap("n", "vv", "<C-v>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
