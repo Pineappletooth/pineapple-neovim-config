@@ -2,7 +2,7 @@ local M = {
   "williamboman/mason.nvim",
   tag = "v1.8.2",
   cmd = "Mason",
-  event = "BufReadPre",
+  event = "VeryLazy",
   dependencies = {
     {
       "williamboman/mason-lspconfig.nvim",
