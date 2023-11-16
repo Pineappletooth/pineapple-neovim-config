@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.4",
+  commit = "721cdcae134eb5c564cb6c9df6c317c3854528ad",
   cmd = { "Telescope" }
 }
 
@@ -20,6 +20,10 @@ function M.config()
           ["<C-k>"] = actions.move_selection_previous,
         },
       },
+    },
+    pickers = {
+      live_grep = {debounce = 1000},
+      find_files = {debounce = 1000}
     }
   })
 
