@@ -1,7 +1,7 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   commit = "efec7115d8175bdb6720eeb4e26196032cb52593",
-  event = { "VeryLazy" },
+  event = { "BufEnter", "VeryLazy" },
   init = function(plugin)
     -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
     -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
@@ -20,12 +20,20 @@ local M = {
       "RRethy/nvim-treesitter-textsubjects",
       commit = "011c09784f1a95cf469a48c1993b664190440391",
     },
+    {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      commit = "6c30f3c8915d7b31c3decdfe6c7672432da1809d",
+      opts = {
+        enable_autocmd = false,
+      },
+    }
 
   },
 }
 function M.config()
   local treesitter = require "nvim-treesitter"
   local configs = require "nvim-treesitter.configs"
+  require('ts_context_commentstring').setup {}
   require 'nvim-treesitter.install'.compilers = { "clang" }
   configs.setup {
     ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python", "typescript", "javascript" }, -- put the language you want in this array

@@ -1,5 +1,6 @@
 return {
   "nvimdev/dashboard-nvim",
+  commit = "63df28409d940f9cac0a925df09d3dc369db9841",
   event = "VimEnter",
   opts = function()
   local logo = [[

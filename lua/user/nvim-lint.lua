@@ -1,6 +1,7 @@
 return {
   {
     "mfussenegger/nvim-lint",
+    commit = "4f2d968a827d86bb40b7b1fad28c11f7b764fef3",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     opts = {
       -- Event to trigger linters

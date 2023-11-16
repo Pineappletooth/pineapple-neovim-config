@@ -1,7 +1,16 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   commit = "721cdcae134eb5c564cb6c9df6c317c3854528ad",
-  cmd = { "Telescope" }
+  cmd = { "Telescope" },
+  dependencies = {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    enabled =  vim.fn.executable("make") == 1,
+    commit = "6c921ca12321edaa773e324ef64ea301a1d0da62",
+    config = function ()
+      require("telescope").load_extension("fzf")
+    end,
+  }
 }
 
 function M.config()
