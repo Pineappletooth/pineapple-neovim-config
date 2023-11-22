@@ -35,7 +35,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Clear highlights
-keymap("n", "<leader>c", "<cmd>nohlsearch<CR>", { desc = "Co highlight" })
+keymap("n", "<leader>k", "<cmd>nohlsearch<CR>", { desc = "Disable highlight search" })
 
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
@@ -77,6 +77,11 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>m", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "MiniFiles current file" })
 keymap("n", "<leader>M", ":lua MiniFiles.open(vim.loop.cwd())<CR>", { desc = "MiniFiles cwd" })
 
+-- Mini-Map
+
+keymap("n", "<leader>n", ":lua MiniMap.toggle()<CR>", { desc = "MiniMap toggle" })
+keymap("n", "<leader>N", ":lua MiniMap.toggle_focus()<CR>", { desc = "MiniMap focus" })
+
 -- Telescope <C-q> to send search to quickfix
 keymap("n", "<leader>ft", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fF", ":Telescope live_grep<CR>", opts)
@@ -97,7 +102,8 @@ keymap("n", "<leader>Gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 keymap("n", "<leader>Gd", "<cmd>Gitsigns toggle_current_line_blame<CR>", {desc = "toggle_current_line_blame", silent = true})
 
 -- Go to
-keymap("n", "<leader>gc", "<cmd>cd %:h <CR>", { desc = "Change CWD to current"})
+keymap("n", "<leader>gw", "<cmd>cd %:h <CR>", { desc = "Change CWD to current"})
+keymap("n", "<leader>gc", "<cmd>e $MYVIMRC<CR>", { desc = "Go to config"})
 
 -- Comment
 keymap("n", "<leader>}", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
@@ -138,7 +144,7 @@ keymap("n", "<leader>bb", "<cmd>BufDelOthers<CR>", { desc = "delete all except b
 keymap("n", "<leader>h", "<cmd>WhichKey<CR>", { desc = "show all keymaps", silent = true })
 keymap("n", "<leader>r", "<cmd>set rnu!<CR>", { desc = "Toggle RNU" })
 keymap("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true })
-keymap("n", "<leader>s", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
+keymap("n", "<leader>s", "<cmd>Telescope grep_string<CR>", { desc = "Grep string" })
 keymap("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", { desc = "Grep string" })
 keymap("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
 
