@@ -8,10 +8,6 @@ local M = {
       commit = "44b16d11215dce86f253ce0c30949813c0a90765",
     },
     {
-       "ray-x/lsp_signature.nvim",
-       commit = "1fba8f477b8c65add5e07cda0504cf7f81a9a4ab"
-    },
-    {
       "SmiteshP/nvim-navbuddy",
       commit = "f137a3466a6cd1965cdcc5398daff54e66eebbe5",
       dependencies = {
@@ -32,9 +28,6 @@ local M = {
 
 function M.config()
   local cmp_nvim_lsp = require "cmp_nvim_lsp"
-  require "lsp_signature".setup({
-
-  })
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)

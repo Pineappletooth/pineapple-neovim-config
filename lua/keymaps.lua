@@ -15,9 +15,11 @@ vim.g.mapleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+--Insert
+--lsp
+keymap("i","<C-s>","<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
 -- Normal --
 -- Better window navigation
--- TODO: Investigate conflicting keymap
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -38,7 +40,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>k", "<cmd>nohlsearch<CR>", { desc = "Disable highlight search" })
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<S-q>", "<cmd>BufDel<CR>", opts)
 
 -- Better copy paste
 keymap('n', '<C-s>', ':w<CR>') -- Save
@@ -170,5 +172,13 @@ keymap("n", "<leader>ghd", "<cmd>Gitsigns diffthis", { desc = "Diff This" })
 keymap("n", "<leader>ghD", "<cmd>lua require'gitsigns'.diffthis('~')<CR>", { desc = "Diff This ~" })
 keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "GitSigns Select Hunk" })
 
+keymap({'n', 'v', 'o'}, '°',"_<cmd>lua require('tree-climber').goto_parent({skip_comments = true})<cr>_", {silent = true, desc="goto parent"})
+keymap({'n', 'v', 'o'}, '|', "g_<cmd>lua require('tree-climber').goto_child({skip_comments = true})<cr>_", {silent = true, desc="goto child"})
+keymap({'n', 'v', 'o'}, '<tab>',"_<cmd>lua require('tree-climber').goto_next({skip_comments = true})<cr>", {silent = true, desc="goto next"})
+keymap({'n', 'v', 'o'}, '<S-TAB>',"_<cmd>lua require('tree-climber').goto_prev({skip_comments = true})<cr>", {silent = true, desc="goto prev"})
+keymap({'v', 'o'}, 'in', "<cmd>lua require('tree-climber').select_node()<cr>", {silent = true, desc="select node"})
+keymap('n', '<c-t>', "<cmd>lua require('tree-climber').swap_prev()<cr>", {silent=true, desc="swap prev"})
+keymap('n', '<c-y>', "<cmd>lua require('tree-climber').swap_next()<cr>", {silent=true, desc="swap next"})
+keymap('n', '<leader>th', "<cmd>lua require('tree-climber').highlight_node()<cr>", {silent = true, desc="highlight node"})
 
 
