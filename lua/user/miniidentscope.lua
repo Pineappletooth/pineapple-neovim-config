@@ -1,6 +1,6 @@
 local M = {
   "echasnovski/mini.indentscope",
-  tag = 'v0.10.0',
+  tag = 'v0.11.0',
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     -- symbol = "▏",
