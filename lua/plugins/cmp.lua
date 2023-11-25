@@ -28,11 +28,6 @@ local M = {
       commit = "8ee981b4a91f536f52add291594e89fb6645e451",
     },
     {
-      "dmitmel/cmp-cmdline-history",
-      event = "InsertEnter",
-      commit = "003573b72d4635ce636234a826fa8c4ba2895ffe",
-    },
-    {
       "saadparwaiz1/cmp_luasnip",
       event = "InsertEnter",
       commit = "05a9ab28b53f71d1aece421ef32fee2cb857a843",
@@ -223,12 +218,11 @@ function M.config()
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = 'buffer' },
-      { name = 'cmdline_history' },
     },
     window = {
       completion = {
         border = "none",
-        winhighlight = "CmpItemAbbrMatch:None,Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:None,Search:None",
+        winhighlight = "CmpItemAbbrMatch:None,CmpItemAbbrMatchFuzzy:None,Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:None,Search:None",
         side_padding = 1,
       },
     },
@@ -242,7 +236,6 @@ function M.config()
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = 'path' },
-      { name = 'cmdline_history' },
     },
     {
       {
@@ -255,7 +248,7 @@ function M.config()
     window = {
       completion = {
         border = "none",
-        winhighlight = "CmpItemAbbrMatch:None,Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:None,Search:None",
+        winhighlight = "CmpItemAbbrMatch:None,CmpItemAbbrMatchFuzzy:None,Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:None,Search:None",
         side_padding = 1,
       },
     },
