@@ -3,6 +3,7 @@ local M = {
   tag = "v4.4.0",
   event = { "BufEnter" },
  }
+-- TODO: keep diagnostics after switch 
 function M.config()
   require("bufferline").setup {
     options = {

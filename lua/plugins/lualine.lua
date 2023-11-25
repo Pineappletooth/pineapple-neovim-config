@@ -3,7 +3,7 @@ local M = {
   commit = "2248ef254d0a1488a72041cfb45ca9caada6d994",
   event = { "VeryLazy" },
 }
-
+-- TODO: pointy lualine, check bufferline too
 function M.config()
   local icons = require("icons")
   local status_ok, lualine = pcall(require, "lualine")
