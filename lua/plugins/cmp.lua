@@ -28,6 +28,11 @@ local M = {
       commit = "8ee981b4a91f536f52add291594e89fb6645e451",
     },
     {
+      "dmitmel/cmp-cmdline-history",
+      event = "InsertEnter",
+      commit = "003573b72d4635ce636234a826fa8c4ba2895ffe",
+    },
+    {
       "saadparwaiz1/cmp_luasnip",
       event = "InsertEnter",
       commit = "05a9ab28b53f71d1aece421ef32fee2cb857a843",
@@ -68,6 +73,7 @@ function M.config()
   local icons = require "icons"
 
   cmp.setup {
+
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -173,7 +179,7 @@ function M.config()
           end
 
           if kind == "Text" then
-            return false
+            return true
           end
 
           return true
@@ -196,7 +202,7 @@ function M.config()
     },
     window = {
       completion = {
-        border = "rounded",
+        border = "single",
         winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
         col_offset = -3,
         side_padding = 1,
@@ -204,14 +210,59 @@ function M.config()
         scrolloff = 8,
       },
       documentation = {
-        border = "rounded",
+        border = "single",
         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
       },
     },
     experimental = {
       ghost_text = true,
     },
-  }
+  }  
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' },
+      { name = 'cmdline_history' },
+    },
+    window = {
+      completion = {
+        border = "none",
+        winhighlight = "CmpItemAbbrMatch:None,Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:None,Search:None",
+        side_padding = 1,
+      },
+    },
+    formatting = {
+      fields = {'abbr'}
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' },
+      { name = 'cmdline_history' },
+    },
+    {
+      {
+        name = 'cmdline',
+        option = {
+          ignore_cmds = { 'Man', '!' }
+        }
+      }
+    }),
+    window = {
+      completion = {
+        border = "none",
+        winhighlight = "CmpItemAbbrMatch:None,Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:None,Search:None",
+        side_padding = 1,
+      },
+    },
+    formatting = {
+      fields = {'abbr'}
+    }
+  })
 
   pcall(function()
     local function on_confirm_done(...)
