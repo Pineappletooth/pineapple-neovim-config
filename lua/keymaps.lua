@@ -17,7 +17,7 @@ vim.g.mapleader = " "
 
 --Insert
 --lsp
-keymap("i","<C-s>","<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+keymap("i","<C-s>",function() vim.lsp.buf.signature_help() end, opts)
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -76,8 +76,8 @@ keymap("n", "<leader>n", "<cmd>set number!<CR>", { desc = "toggle numbers" })
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Mini-Files
-keymap("n", "<leader>m", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "MiniFiles current file" })
-keymap("n", "<leader>M", ":lua MiniFiles.open(vim.loop.cwd())<CR>", { desc = "MiniFiles cwd" })
+keymap("n", "<leader>m", function() MiniFiles.open(vim.api.nvim_buf_get_name(0))end, { desc = "MiniFiles current file" })
+keymap("n", "<leader>M", function() MiniFiles.open(vim.loop.cwd()) end, { desc = "MiniFiles cwd" })
 
 -- Mini-Map
 
@@ -181,4 +181,7 @@ keymap('n', '<c-t>', "<cmd>lua require('tree-climber').swap_prev()<cr>", {silent
 keymap('n', '<c-y>', "<cmd>lua require('tree-climber').swap_next()<cr>", {silent=true, desc="swap next"})
 keymap('n', '<leader>th', "<cmd>lua require('tree-climber').highlight_node()<cr>", {silent = true, desc="highlight node"})
 
-
+--tests
+keymap("n","<leader>tr", function()require("neotest").run.run() end, {silent="true", desc="run nearest test"})
+keymap("n","<leader>tf", function()require("neotest").run.run(vim.fn.expand("%")) end, {silent="true", desc="run current file"})
+keymap("n","<leader>ts", function()require("neotest").run.stop() end, {silent="true", desc="stop test"})
