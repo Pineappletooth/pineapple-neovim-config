@@ -14,7 +14,11 @@ function M.config()
     b = {name = "Buffers"},
     d = {name = "dap"},
     l = {name = "lsp"},
-    q = {name = "session"}
+    q = {name = "session"},
+    G = {
+      name = "git",
+      c = "Resolve conflits",
+    }
   }, { prefix = "<leader>",  })
 end
 

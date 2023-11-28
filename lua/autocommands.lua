@@ -74,6 +74,19 @@ vim.api.nvim_create_autocmd("CursorHold", {
     vim.b.diagnostics_pos = cursor_pos
   end,
 })
+
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI'}, {
+  pattern = '*',
+  command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif",
+})
+
+-- Notification after file change
+-- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+vim.api.nvim_create_autocmd({'FileChangedShellPost'}, {
+  pattern = '*',
+  command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
+})
+
 --vim.opt.listchars = { tab = "⇥ ",eol = "↲",nbsp = "␣",trail = "•",extends = "⟩" }
 --vim.cmd[[set list]]
 --vim.cmd[[colorscheme tokyonight-night]]

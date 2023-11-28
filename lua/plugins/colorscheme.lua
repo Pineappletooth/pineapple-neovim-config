@@ -14,14 +14,15 @@ function M.config()
   require("tokyonight").setup({
     style = "night",
     on_highlights = function(hl, c)
-      hl.DiagnosticUnnecessary = {
-        fg = c.dark5,
-      }
-      hl.MiniIndentscopeSymbolOff = {
-        fg = c.cyan
-      }
+      hl.DiagnosticUnnecessary = { fg = c.dark5, }
+      hl.MiniIndentscopeSymbolOff = { fg = c.cyan }
+      hl.ConflictMarkerBegin = { bg = c.gitSigns.add}
+      hl.ConflictMarkerOurs = { bg = c.diff.add }
+      hl.ConflictMarkerTheirs = { bg = c.diff.change }
+      hl.ConflictMarkerEnd = { bg = c.gitSigns.change }
+      hl.ConflictMarkerCommonAncestorsHunk = { bg = c.diff.delete }
     end,
-  --   on_highlights = function(highlights, colors)
+    --   on_highlights = function(highlights, colors)
   --     highlights.MiniIndentscopeSymbol = {
   --     fg = colors.purple,
   --   }

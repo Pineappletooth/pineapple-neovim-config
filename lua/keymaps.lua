@@ -102,6 +102,11 @@ keymap("n", "<leader>fgc", ":Telescope git_commits<CR>", opts)
 -- Git
 keymap("n", "<leader>Gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 keymap("n", "<leader>Gd", "<cmd>Gitsigns toggle_current_line_blame<CR>", {desc = "toggle_current_line_blame", silent = true})
+keymap("n", "<leader>Gct", "<cmd>ConflictMarkerThemselves<CR>", opts)
+keymap("n", "<leader>Gco", "<cmd>ConflictMarkerOurselves<CR>", opts)
+keymap("n", "<leader>Gcn", "<cmd>ConflictMarkerNone<CR>", opts)
+keymap("n", "<leader>Gcb", "<cmd>ConflictMarkerBoth<CR>", opts)
+
 
 -- Go to
 keymap("n", "<leader>gw", "<cmd>cd %:h <CR>", { desc = "Change CWD to current"})
