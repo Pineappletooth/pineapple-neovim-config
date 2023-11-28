@@ -187,6 +187,6 @@ keymap('n', '<c-y>', "<cmd>lua require('tree-climber').swap_next()<cr>", {silent
 keymap('n', '<leader>th', "<cmd>lua require('tree-climber').highlight_node()<cr>", {silent = true, desc="highlight node"})
 
 --tests
-keymap("n","<leader>tr", function()require("neotest").run.run() end, {silent="true", desc="run nearest test"})
-keymap("n","<leader>tf", function()require("neotest").run.run(vim.fn.expand("%")) end, {silent="true", desc="run current file"})
-keymap("n","<leader>ts", function()require("neotest").run.stop() end, {silent="true", desc="stop test"})
+keymap("n","<leader>tr", function()require("neotest").run.run() end, {silent=true, desc="run nearest test"})
+keymap("n","<leader>tf", function()require("neotest").run.run(vim.fn.expand("%")) end, {silent=true, desc="run current file"})
+keymap("n","<leader>ts", function()require("neotest").run.stop() end, {silent=true, desc="stop test"})
