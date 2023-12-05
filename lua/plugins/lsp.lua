@@ -22,6 +22,11 @@ local M = {
         }
       },
       opts = { lsp = { auto_attach = true } }
+    },
+    {
+      "pmizio/typescript-tools.nvim",
+      commit = "7911a0aa27e472bff986f1d3ce38ebad3b635b28",
+      opts = {},
     }
   },
 }
