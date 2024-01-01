@@ -14,6 +14,11 @@ function M.config()
         end
         local icons = require("icons").diagnostics
         local ret = (diagnostics_dict.error and icons.BoldError .. " " .. diagnostics_dict.error .. " " or "")
+        --hbac integration
+        if not require("hbac.state").is_pinned(context.buffer:current()) then
+          ret = "" .. ret
+        end
+        print(ret)
         return vim.trim(ret)
       end,
       diagnostics = "nvim_lsp",
