@@ -1,7 +1,7 @@
 return {
   'chentoast/marks.nvim',
   event={"BufEnter"},
-  commit  = '76aca5069c5ce5c0099e30168649e6393e494f26',
+  commit  = '74e8d01b2a2131b6e46354cffc553aa7f81bcf5b',
   config = function ()
     require('marks').setup({})
   end

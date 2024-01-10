@@ -139,7 +139,7 @@ keymap("n", "g}", "<cmd>cnext<cr>", opts)
 keymap("n", "g{", "<cmd>cprev<cr>", opts)
 
 -- Lsp
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", {desc = "Format line"})
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", {desc = "Format file (use = to single line)"})
 keymap("n", "<leader>ln", "<cmd>Navbuddy<cr>", opts)
 
 keymap("n", "<leader><space>", "<cmd>Telescope find_files<CR>", opts)

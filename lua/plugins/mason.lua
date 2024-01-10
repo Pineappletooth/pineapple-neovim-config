@@ -1,6 +1,6 @@
 local M = {
   "williamboman/mason.nvim",
-  tag = "v1.8.3",
+  tag = "v1.9.0",
   cmd = "Mason",
   event = "VeryLazy",
   dependencies = {

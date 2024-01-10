@@ -1,6 +1,6 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  commit = "efec7115d8175bdb6720eeb4e26196032cb52593",
+  commit = "8cd2b230174efbf7b5d9f49fe2f90bda6b5eb16e",
   event = { "BufEnter", "VeryLazy" },
   init = function(plugin)
     -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early

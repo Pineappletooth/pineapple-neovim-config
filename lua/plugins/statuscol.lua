@@ -1,6 +1,6 @@
 return {
   "luukvbaal/statuscol.nvim",
-  commit = "98d02fc90ebd7c4674ec935074d1d09443d49318",
+  commit = "3b629754420919575a9e5758027d6e1831dbf2aa",
   event = {"BufEnter"},
   config = function()
     local builtin = require("statuscol.builtin")

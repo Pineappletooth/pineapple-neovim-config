@@ -13,19 +13,19 @@ local M = {
       dependencies = {
         {
           "SmiteshP/nvim-navic",
-          commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
+          commit = "8649f694d3e76ee10c19255dece6411c29206a54",
           opts = { lsp = { auto_attach = true } }
         },
         {
           "MunifTanjim/nui.nvim",
-          commit = "c0c8e347ceac53030f5c1ece1c5a5b6a17a25b32"
+          commit = "35da9ca1de0fc4dda96c2e214d93d363c145f418"
         }
       },
       opts = { lsp = { auto_attach = true } }
     },
     {
       "pmizio/typescript-tools.nvim",
-      commit = "7911a0aa27e472bff986f1d3ce38ebad3b635b28",
+      commit = "13d9dda2fc1ff82ca5a8ced0e1b46e93debac792",
       opts = {},
     }
   },

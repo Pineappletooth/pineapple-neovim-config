@@ -1,6 +1,6 @@
 return{
   "olimorris/persisted.nvim",
-  commit = 'd821524f94b576474234d17e68c3751b36ae188b',
+  commit = 'edd8aa41cd87f9da1b6ef0c584068dea192f65b7',
   config = function()
     require("persisted").setup()
     require("telescope").load_extension("persisted")
