@@ -10,7 +10,8 @@ M.servers = {
   "jsonls",
   "yamlls",
   "eslint",
-  "cssmodules_ls"
+  "cssmodules_ls",
+  "gopls"
 }
 M.ensure_installed = {
   "lua_ls",
@@ -22,7 +23,8 @@ M.ensure_installed = {
   "jsonls",
   "yamlls",
   "eslint",
-  "cssmodules_ls"
+  "cssmodules_ls",
+  "gopls"
 }
 
 return M

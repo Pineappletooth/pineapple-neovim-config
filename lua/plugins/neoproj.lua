@@ -1,5 +1,6 @@
 return {
   "pluffie/neoproj",
+  lazy = false,
   cmd = { "ProjectOpen", "ProjectNew" },
   config = function()
     vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
