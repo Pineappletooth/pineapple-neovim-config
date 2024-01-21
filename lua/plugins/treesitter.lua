@@ -1,6 +1,6 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  commit = "8cd2b230174efbf7b5d9f49fe2f90bda6b5eb16e",
+  commit = "5cc562748729b6dc9563ea5a3d676ff102ab38b1",
   event = { "BufEnter", "VeryLazy" },
   init = function(plugin)
     -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -14,15 +14,15 @@ local M = {
   dependencies = {
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      commit = "e69a504baf2951d52e1f1fbb05145d43f236cbf1",
+      commit = "19a91a38b02c1c28c14e0ba468d20ae1423c39b2",
     },
     {
       "RRethy/nvim-treesitter-textsubjects",
-      commit = "011c09784f1a95cf469a48c1993b664190440391",
+      commit = "55d11124c45e9bb506703f73e5775652ed5357e9",
     },
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
-      commit = "6c30f3c8915d7b31c3decdfe6c7672432da1809d",
+      commit = "1277b4a1f451b0f18c0790e1a7f12e1e5fdebfee",
       opts = {
         enable_autocmd = false,
       },
@@ -50,10 +50,7 @@ function M.config()
     },
     indent = { enable = true, disable = { "python", "css" } },
 
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
+    enable_autocmd = false,
     textobjects = {
       move = {
         enable = true,
