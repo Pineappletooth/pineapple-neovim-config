@@ -1,6 +1,6 @@
 local M = {
   "lewis6991/gitsigns.nvim",
-  commit = "af0f583cd35286dd6f0e3ed52622728703237e50",
+  commit = "c5ff7628e19a47ec14d3657294cc074ecae27b99",
   event = { "BufReadPost", "BufWritePost", "BufNewFile" },
   opts = {
 
@@ -17,9 +17,10 @@ function M.config()
       changedelete = { text = "▎" },
       untracked = { text = "┋" },
     },
+    update_debounce = 5000,
     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
-      delay = 1000,
+      delay = 5000,
     },
   })
 end
