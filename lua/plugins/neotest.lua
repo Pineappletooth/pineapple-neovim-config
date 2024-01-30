@@ -1,6 +1,6 @@
 return {
   "nvim-neotest/neotest",
-  commit = "d424d262d01bccc1e0b038c9a7220a755afd2a1f",
+  commit = "73043d666780e35185a77589e01bec96a52db910",
   dependencies = {
     {
       "antoinemadec/FixCursorHold.nvim",

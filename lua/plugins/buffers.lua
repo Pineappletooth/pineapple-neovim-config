@@ -18,11 +18,5 @@ return {
           threshold = 1,
       })
     end
-  },{
-    'chrisgrieser/nvim-early-retirement',
-    commit = 'ccf536e45d77abdb5f2dcba8154a780a48ea15b1',
-    event = 'VeryLazy',
-    config = true,
-    opts = {}
-  }
+  },
 }

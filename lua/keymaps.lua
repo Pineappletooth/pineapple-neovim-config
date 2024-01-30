@@ -184,11 +184,14 @@ keymap({'n', 'v', 'o'}, '<S-TAB>',"_<cmd>lua require('tree-climber').goto_prev({
 keymap({'v', 'o'}, 'in', "<cmd>lua require('tree-climber').select_node()<cr>", {silent = true, desc="select node"})
 keymap('n', '<c-t>', "<cmd>lua require('tree-climber').swap_prev()<cr>", {silent=true, desc="swap prev"})
 keymap('n', '<c-y>', "<cmd>lua require('tree-climber').swap_next()<cr>", {silent=true, desc="swap next"})
-keymap('n', '<leader>th', "<cmd>lua require('tree-climber').highlight_node()<cr>", {silent = true, desc="highlight node"})
+keymap('n', '<leader><tab>', "<cmd>lua require('tree-climber').highlight_node()<cr>", {silent = true, desc="highlight node"})
 
 --tests
 keymap("n","<leader>tr", function()require("neotest").run.run() end, {silent=true, desc="run nearest test"})
 keymap("n","<leader>tf", function()require("neotest").run.run(vim.fn.expand("%")) end, {silent=true, desc="run current file"})
 keymap("n","<leader>ts", function()require("neotest").run.stop() end, {silent=true, desc="stop test"})
+keymap("n","<leader>ta", function()require("neotest").run.attach() end, {silent=true, desc="attach test"})
+keymap("n","<leader>tp", function()require("neotest").output_panel.toggle() end, {silent=true, desc="open output pannel"})
+keymap("n","<leader>ts", function()require("neotest").summary.toggle() end, {silent=true, desc="open summary pannel"})
 
 keymap("n","<leader>p", "<cmd>Hbac toggle_pin<cr>", {desc="toggle pin"})
