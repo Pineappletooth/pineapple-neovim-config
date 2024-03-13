@@ -1,6 +1,5 @@
 local M = {
   "akinsho/bufferline.nvim",
-  tag = "v4.4.0",
   event = { "BufEnter" },
 }
 -- TODO: keep diagnostics after switch 

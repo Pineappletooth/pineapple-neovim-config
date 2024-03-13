@@ -1,6 +1,5 @@
 local M = {
   'echasnovski/mini.files',
-  tag = 'v0.11.0',
 }
 function M.config()
   require("mini.files").setup( {

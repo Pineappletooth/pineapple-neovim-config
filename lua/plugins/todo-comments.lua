@@ -1,6 +1,5 @@
 local M = {
   "folke/todo-comments.nvim",
-  commit = "3094ead8edfa9040de2421deddec55d3762f64d1",
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "TodoTrouble", "TodoTelescope" },
   event = { "BufReadPost", "BufNewFile" },

@@ -1,31 +1,25 @@
 local M = {
   "neovim/nvim-lspconfig",
-  commit = "d0467b9574b48429debf83f8248d8cee79562586",
   event = { "BufReadPre", "BufNewFile"},
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "44b16d11215dce86f253ce0c30949813c0a90765",
     },
     {
       "SmiteshP/nvim-navbuddy",
-      commit = "f137a3466a6cd1965cdcc5398daff54e66eebbe5",
       dependencies = {
         {
           "SmiteshP/nvim-navic",
-          commit = "8649f694d3e76ee10c19255dece6411c29206a54",
           opts = { lsp = { auto_attach = true } }
         },
         {
           "MunifTanjim/nui.nvim",
-          commit = "35da9ca1de0fc4dda96c2e214d93d363c145f418"
         }
       },
       opts = { lsp = { auto_attach = true } }
     },
     {
       "pmizio/typescript-tools.nvim",
-      commit = "13d9dda2fc1ff82ca5a8ced0e1b46e93debac792",
       opts = {},
     }
   },

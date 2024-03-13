@@ -1,12 +1,10 @@
 local M = {
   "williamboman/mason.nvim",
-  tag = "v1.9.0",
   cmd = "Mason",
   event = "VeryLazy",
   dependencies = {
     {
       "williamboman/mason-lspconfig.nvim",
-      tag = "v1.22.0"
     },
   },
 }

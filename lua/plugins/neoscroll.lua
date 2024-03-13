@@ -1,9 +1,21 @@
 return {
   'karb94/neoscroll.nvim',
-  commit = 'be4ebf855a52f71ca4338694a5696675d807eff9',
+  enabled = true,
   config = function ()
     require('neoscroll').setup({
-      performance_mode = true
+      -- performance_mode = true
+      pre_hook = function()
+        vim.opt.eventignore:append({
+            'WinScrolled',
+            'CursorMoved',
+         })
+    end,
+        post_hook = function()
+        vim.opt.eventignore:remove({
+            'WinScrolled',
+            'CursorMoved',
+        })
+    end,
     })
   end
 }

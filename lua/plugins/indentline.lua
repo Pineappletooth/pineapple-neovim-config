@@ -1,7 +1,6 @@
 local M = {
   "lukas-reineke/indent-blankline.nvim",
   event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-  tag = "v3.3.7",
   opts = {
     indent = { char = "│" },
     scope = { enabled = false },

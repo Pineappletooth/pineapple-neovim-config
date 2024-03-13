@@ -1,9 +1,9 @@
 local M = {
   "echasnovski/mini.indentscope",
-  tag = 'v0.11.0',
   event = { "BufReadPre", "BufNewFile" },
   opts = {
-    -- symbol = "▏",
+    symbol = "│",
+    options = { try_as_border = true },
   },
   enabled = true,
   init = function()
@@ -32,7 +32,6 @@ function M.config()
     options = { try_as_border = true },
     draw = {
       animation = require('mini.indentscope').gen_animation.none(),
-      priority = 110
     },
     mappings = {
       -- Textobjects

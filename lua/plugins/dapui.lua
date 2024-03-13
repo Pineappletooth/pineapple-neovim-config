@@ -1,6 +1,5 @@
 local M = {
   "rcarriga/nvim-dap-ui",
-  tag = "v3.9.1",
   event = "VeryLazy",
   dependencies = {
     {

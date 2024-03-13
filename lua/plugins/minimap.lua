@@ -1,6 +1,5 @@
 return {
   'echasnovski/mini.map',
-  tag = 'v0.11.0',
   event = {'BufEnter'},
   config = function()
     require('mini.map').setup({

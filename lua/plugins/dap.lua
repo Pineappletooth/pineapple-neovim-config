@@ -1,6 +1,5 @@
 local M = {
   "mfussenegger/nvim-dap",
-  tag = "0.7.0",
   event = "VeryLazy",
 }
 
