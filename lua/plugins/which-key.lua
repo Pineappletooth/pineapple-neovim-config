@@ -6,20 +6,27 @@ local M = {
 function M.config()
   local wk = require("which-key")
   wk.setup {
-    triggers_nowait = {}
+    triggers_nowait = {},
   }
   wk.register({
-    f = {name = "Telescope"},
-    b = {name = "Buffers"},
-    d = {name = "dap"},
-    l = {name = "lsp"},
-    q = {name = "session"},
+    f = { name = "Telescope" },
+    b = { name = "Buffers" },
+    d = { name = "dap" },
+    l = { name = "lsp" },
+    q = { name = "session" },
     G = {
       name = "git",
       c = "Resolve conflits",
     },
-    x = {name = "quickfix"}
-  }, { prefix = "<leader>",  })
+    x = { name = "quickfix" }
+  }, { prefix = "<leader>", })
+
+  wk.register({
+    g = {
+      q = "format with formatexpr",
+      w = "format"
+    }
+  })
 end
 
 return M
