@@ -1,7 +1,7 @@
 return {
   'stevearc/conform.nvim',
   cmd = "ConformInfo",
-   event = { "BufWritePre" },
+  event = { "BufWritePre" },
   keys = {
     {
       "<leader>c",
@@ -13,11 +13,12 @@ return {
     },
   },
   opts = {
-     formatters_by_ft = {
-        lua = { "stylua" },
-      },
+    formatters_by_ft = {
+      lua = { "stylua" },
+      javascript = { { "prettierd", "prettier" } },
+    },
     formatters = {
-        injected = { options = { ignore_errors = true } },
+      injected = { options = { ignore_errors = true } },
     }
   },
   config = function()
