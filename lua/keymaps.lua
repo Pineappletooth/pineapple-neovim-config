@@ -3,6 +3,27 @@ local keymap = vim.keymap.set
 -- Silent keymap option
 local opts = { silent = true }
 
+local function descOpts(desc)
+  return {
+    silent = true,
+    desc = desc
+  }
+end
+
+local function toggle_qf()
+  local qf_exists = false
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win["quickfix"] == 1 then
+      qf_exists = true
+    end
+  end
+  if qf_exists == true then
+    vim.cmd "cclose"
+  else
+    vim.cmd "copen"
+  end
+end
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -20,7 +41,7 @@ vim.g.mapleader = " "
 keymap("i","<C-s>",function() vim.lsp.buf.signature_help() end, opts)
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-h>", "<C-k>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
@@ -37,7 +58,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Clear highlights
-keymap("n", "<leader>k", "<cmd>nohlsearch<CR>", { desc = "Disable highlight search" })
+keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "Disable highlight search" })
 
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>BufDel<CR>", opts)
@@ -128,8 +149,8 @@ keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- quickfix
-keymap("n", "<leader>xx", "<cmd>cclose<cr>", opts)
-keymap("n", "<leader>xq", "<cmd>copen<cr>", opts)
+keymap("n", "<leader>xq", "<cmd>cclose<cr>", opts)
+keymap("n", "<leader>xx", toggle_qf, descOpts("Toggle quickfix"))
 keymap("n", "<leader>xn", "<cmd>cnewer<cr>", opts)
 keymap("n", "<leader>xo", "<cmd>colder<cr>", opts)
 keymap("n", "<leader>xd", "<cmd>lua vim.diagnostic.setqflist()<cr>", opts)
@@ -148,7 +169,7 @@ keymap("n", "<leader>bp", "<cmd>bp<CR>", { desc = "previous buffer", silent = tr
 keymap("n", "<leader>bd", "<cmd>BufDel<CR>", { desc = "delete current buffer", silent = true })
 keymap("n", "<leader>bD", "<cmd>BufDelAll<CR>", { desc = "delete all buffer", silent = true })
 keymap("n", "<leader>bb", "<cmd>BufDelOthers<CR>", { desc = "delete all except buffer current one", silent = true })
-keymap("n", "<leader>h", "<cmd>WhichKey<CR>", { desc = "show all keymaps", silent = true })
+keymap("n", "<leader>k", "<cmd>WhichKey<CR>", { desc = "show all keymaps", silent = true })
 keymap("n", "<leader>r", "<cmd>set rnu!<CR>", { desc = "Toggle RNU" })
 keymap("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true })
 keymap("n", "<leader>s", "<cmd>Telescope grep_string<CR>", { desc = "Grep string" })
@@ -194,4 +215,3 @@ keymap("n","<leader>ta", function()require("neotest").run.attach() end, {silent=
 keymap("n","<leader>tp", function()require("neotest").output_panel.toggle() end, {silent=true, desc="open output pannel"})
 keymap("n","<leader>ts", function()require("neotest").summary.toggle() end, {silent=true, desc="open summary pannel"})
 
-keymap("n","<leader>p", "<cmd>Hbac toggle_pin<cr>", {desc="toggle pin"})

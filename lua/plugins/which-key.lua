@@ -17,7 +17,8 @@ function M.config()
     G = {
       name = "git",
       c = "Resolve conflits",
-    }
+    },
+    x = {name = "quickfix"}
   }, { prefix = "<leader>",  })
 end
 

@@ -1,6 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile"},
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
@@ -8,21 +8,19 @@ local M = {
     {
       "SmiteshP/nvim-navbuddy",
       dependencies = {
-        {
-          "SmiteshP/nvim-navic",
-          opts = { lsp = { auto_attach = true } }
-        },
-        {
-          "MunifTanjim/nui.nvim",
-        }
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim",
       },
       opts = { lsp = { auto_attach = true } }
     },
     {
       "pmizio/typescript-tools.nvim",
       opts = {},
-    }
-  },
+    },
+    {
+      "chrisgrieser/nvim-dr-lsp",
+      event = "BufEnter"
+    } },
 }
 
 function M.config()

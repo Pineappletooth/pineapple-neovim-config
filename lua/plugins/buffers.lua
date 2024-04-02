@@ -8,13 +8,4 @@ return {
       })
     end
   },
-  {
-    'axkirillov/hbac.nvim',
-    event = 'VeryLazy',
-    config = function ()
-      require("hbac").setup({
-          threshold = 5,
-      })
-    end
-  },
 }

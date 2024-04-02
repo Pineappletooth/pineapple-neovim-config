@@ -54,13 +54,6 @@ function M.config()
       lualine_a = { "mode" },
       lualine_b = { "branch" },
       lualine_c = {
-        --TODO figure out if name can be merged with hbac icon
-        {
-          function()
-            local cur_buf = vim.api.nvim_get_current_buf()
-            return require("hbac.state").is_pinned(cur_buf) and "" or ""
-          end,
-        },
         "filename",
         diagnostics,
         {
