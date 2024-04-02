@@ -1,12 +1,9 @@
 return {
   "nvim-neotest/neotest",
   dependencies = {
-    {
-      "antoinemadec/FixCursorHold.nvim",
-    },
-    {
-      "nvim-neotest/neotest-jest",
-    }
+    "nvim-neotest/nvim-nio",
+    "antoinemadec/FixCursorHold.nvim",
+    "nvim-neotest/neotest-jest",
   },
   config = function()
      require('neotest-jest')({
