@@ -1,6 +1,7 @@
 local M = {
   "nvim-tree/nvim-tree.lua",
   lazy = false,
+  enabled = false
 }
 
 local function on_attach(bufnr)
@@ -9,7 +10,6 @@ local function on_attach(bufnr)
   local function opts(desc)
     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
-
   -- Default mappings. Feel free to modify or remove as you wish.
   --
   -- BEGIN_DEFAULT_ON_ATTACH
