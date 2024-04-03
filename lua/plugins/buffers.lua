@@ -1,7 +1,7 @@
 return {
   {
     'ojroques/nvim-bufdel',
-    event = 'VeryLazy',
+    event = 'BufEnter',
     config = function ()
       require('bufdel').setup({
         quit = false

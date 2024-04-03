@@ -1,5 +1,6 @@
 local M = {
   "ahmedkhalf/project.nvim",
+  lazy = false,
   enabled = true,
 }
 

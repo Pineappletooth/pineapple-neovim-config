@@ -90,7 +90,7 @@ keymap("v", ">", ">gv", opts)
 --search without advance
 keymap("n", "<leader>*", "*N", opts)
 
-keymap("n", "<leader>n", "<cmd>set number!<CR>", { desc = "toggle numbers" })
+-- keymap("n", "<leader>n", "<cmd>set number!<CR>", { desc = "toggle numbers" })
 
 
 -- Plugins --
@@ -99,13 +99,13 @@ keymap("n", "<leader>n", "<cmd>set number!<CR>", { desc = "toggle numbers" })
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Mini-Files
-keymap("n", "<leader>m", function() MiniFiles.open(vim.api.nvim_buf_get_name(0))end, { desc = "MiniFiles current file" })
-keymap("n", "<leader>M", function() MiniFiles.open(vim.loop.cwd()) end, { desc = "MiniFiles cwd" })
+keymap("n", "<leader>m",":Minifiles<CR>", { desc = "MiniFiles current file" })
+keymap("n", "<leader>M",":MinifilesCwd<CR>", { desc = "MiniFiles cwd" })
 
 -- Mini-Map
 
-keymap("n", "<leader>n", ":lua MiniMap.toggle()<CR>", { desc = "MiniMap toggle" })
-keymap("n", "<leader>N", ":lua MiniMap.toggle_focus()<CR>", { desc = "MiniMap focus" })
+keymap("n", "<leader>n", ":Minimap<CR>", { desc = "MiniMap toggle" })
+keymap("n", "<leader>N", ":MinimapFocus<CR>", { desc = "MiniMap focus" })
 
 -- Telescope <C-q> to send search to quickfix
 keymap("n", "<leader>ft", ":Telescope find_files<CR>", opts)

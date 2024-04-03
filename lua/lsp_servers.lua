@@ -4,14 +4,14 @@ M.servers = {
   "lua_ls",
   "cssls",
   "html",
-  "typescript-tools",
   "pyright",
   "bashls",
   "jsonls",
   "yamlls",
   "eslint",
   "cssmodules_ls",
-  "gopls"
+  "gopls",
+  -- "jdtls"
 }
 M.ensure_installed = {
   "lua_ls",
@@ -24,7 +24,8 @@ M.ensure_installed = {
   "yamlls",
   "eslint",
   "cssmodules_ls",
-  "gopls"
+  -- "gopls",
+  "jdtls"
 }
 
 return M

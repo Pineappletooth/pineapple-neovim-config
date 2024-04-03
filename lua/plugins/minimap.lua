@@ -1,6 +1,12 @@
+vim.api.nvim_create_user_command('Minimap',function()
+  MiniMap.toggle()
+end,{})
+vim.api.nvim_create_user_command('MinimapFocus',function()
+  MiniMap.toggle_focus()
+end,{})
 return {
   'echasnovski/mini.map',
-  event = {'BufEnter'},
+  command={"Minimap", "MinimapFocus"},
   config = function()
     require('mini.map').setup({
       symbols = {

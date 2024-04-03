@@ -13,7 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 -- example using a list of specs with the default options
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 --vim.g.python3_host_prog = vim.fn.stdpath("config") .. '/.venv/Scripts/python.exe'
-require("lazy").setup("plugins", {
+require("lazy").setup({
+  {import = "plugins"}, {import = "plugins.lsp"}
+}, {
   install = { colorscheme = { "tokyonight" } },
   defaults = { lazy = false, version = nil },
   ui = { wrap = "true" },
