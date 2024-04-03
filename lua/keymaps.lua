@@ -76,7 +76,7 @@ keymap('', '<C-v>', '+p<CR>', { noremap = true, silent = true})
 keymap('!', '<C-v>', '<C-R>+', { noremap = true, silent = true})
 keymap('t', '<C-v>', '<C-R>+', { noremap = true, silent = true})
 keymap('v', '<C-v>', '<C-R>+', { noremap = true, silent = true})
-
+keymap('x', '<leader>p', '"_dP', {noremap = true})
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
 
@@ -198,9 +198,8 @@ keymap("n", "<leader>ghp", "<cmd>Gitsigns preview_hunk", { desc = "Preview Hunk"
 keymap("n", "<leader>ghb", "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", { desc = "Blame Line" })
 keymap("n", "<leader>ghd", "<cmd>Gitsigns diffthis", { desc = "Diff This" })
 keymap("n", "<leader>ghD", "<cmd>lua require'gitsigns'.diffthis('~')<CR>", { desc = "Diff This ~" })
-keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "GitSigns Select Hunk" })
-
 keymap({'n', 'v', 'o'}, '°',"_<cmd>lua require('tree-climber').goto_parent({skip_comments = true})<cr>_", {silent = true, desc="goto parent"})
+
 keymap({'n', 'v', 'o'}, '|', "g_<cmd>lua require('tree-climber').goto_child({skip_comments = true})<cr>_", {silent = true, desc="goto child"})
 keymap({'n', 'v', 'o'}, '<tab>',"_<cmd>lua require('tree-climber').goto_next({skip_comments = true})<cr>", {silent = true, desc="goto next"})
 keymap({'n', 'v', 'o'}, '<S-TAB>',"_<cmd>lua require('tree-climber').goto_prev({skip_comments = true})<cr>", {silent = true, desc="goto prev"})
@@ -208,10 +207,11 @@ keymap({'v', 'o'}, 'in', "<cmd>lua require('tree-climber').select_node()<cr>", {
 keymap('n', '<c-t>', "<cmd>lua require('tree-climber').swap_prev()<cr>", {silent=true, desc="swap prev"})
 keymap('n', '<c-y>', "<cmd>lua require('tree-climber').swap_next()<cr>", {silent=true, desc="swap next"})
 keymap('n', '<leader><tab>', "<cmd>lua require('tree-climber').highlight_node()<cr>", {silent = true, desc="highlight node"})
-
 --tests
+
 keymap("n","<leader>tr", function()require("neotest").run.run() end, {silent=true, desc="run nearest test"})
 keymap("n","<leader>tf", function()require("neotest").run.run(vim.fn.expand("%")) end, {silent=true, desc="run current file"})
+keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "GitSigns Select Hunk" })
 keymap("n","<leader>ts", function()require("neotest").run.stop() end, {silent=true, desc="stop test"})
 keymap("n","<leader>ta", function()require("neotest").run.attach() end, {silent=true, desc="attach test"})
 keymap("n","<leader>tp", function()require("neotest").output_panel.toggle() end, {silent=true, desc="open output pannel"})
