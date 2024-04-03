@@ -43,3 +43,13 @@ vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters
 vim.opt.linebreak = true
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 -- vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
+-- disable some default providers
+vim.g["loaded_node_provider"] = 0
+vim.g["loaded_python3_provider"] = 0
+vim.g["loaded_perl_provider"] = 0
+vim.g["loaded_ruby_provider"] = 0
+
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has("win32") ~= 0
+vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
