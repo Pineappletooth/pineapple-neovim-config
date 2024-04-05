@@ -14,12 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 --vim.g.python3_host_prog = vim.fn.stdpath("config") .. '/.venv/Scripts/python.exe'
 require("lazy").setup({
-  {import = "plugins"}, {import = "plugins.lsp"}
+  { import = "plugins" }, { import = "plugins.lsp" }
 }, {
   install = { colorscheme = { "tokyonight" } },
-  defaults = { lazy = false, version = nil },
+  defaults = { lazy = false, version = false },
   ui = { wrap = "true" },
-  change_detection = { enabled = true },
+  change_detection = { enabled = false },
   debug = false,
   performance = {
     rtp = {
@@ -34,7 +34,6 @@ require("lazy").setup({
         "netrwPlugin",
         "netrwSettings",
         "netrwFileHandlers",
-        "matchit",
         "tar",
         "tarPlugin",
         "rrhelper",
@@ -53,5 +52,12 @@ require("lazy").setup({
         "ftplugin",
       },
     },
+  },
+    profiling = {
+    -- Enables extra stats on the debug tab related to the loader cache.
+    -- Additionally gathers stats about all package.loaders
+    loader = false,
+    -- Track each new require in the Lazy profiling tab
+    require = false,
   },
 })

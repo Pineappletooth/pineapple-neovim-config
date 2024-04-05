@@ -28,4 +28,16 @@ M.ensure_installed = {
   "jdtls"
 }
 
+M.treesitter = {
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "bash",
+  "python",
+  "typescript",
+  "javascript",
+  "tsx",
+  "vimdoc"
+}
+
 return M
