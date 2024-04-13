@@ -98,12 +98,6 @@ keymap("n", "<leader>*", "*N", opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
--- Mini-Files
-keymap("n", "<leader>m",":Minifiles<CR>", { desc = "MiniFiles current file" })
-keymap("n", "<leader>M",":MinifilesCwd<CR>", { desc = "MiniFiles cwd" })
-
--- Mini-Map
-
 keymap("n", "<leader>n", ":Minimap<CR>", { desc = "MiniMap toggle" })
 keymap("n", "<leader>N", ":MinimapFocus<CR>", { desc = "MiniMap focus" })
 

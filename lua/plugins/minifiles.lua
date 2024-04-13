@@ -1,11 +1,16 @@
-vim.api.nvim_create_user_command('Minifiles', function() MiniFiles.open(vim.api.nvim_buf_get_name(0))end,{})
-vim.api.nvim_create_user_command('MinifilesCwd', function() MiniFiles.open(vim.loop.cwd()) end,{})
+vim.api.nvim_create_user_command('Minifiles', function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end, {})
+vim.api.nvim_create_user_command('MinifilesCwd', function() MiniFiles.open(vim.loop.cwd()) end, {})
 local M = {
   'echasnovski/mini.files',
-  command = {"Minifiles", "MinifilesCwd"}
+  command = { "Minifiles", "MinifilesCwd" },
+  keys = {
+    { "<leader>m", function() vim.cmd "Minifiles" end },
+    { "<leader>m", function() vim.cmd "MinifilesCwd" end }
+  },
+
 }
 function M.config()
-  require("mini.files").setup( {
+  require("mini.files").setup({
     options = {
       permanent_delete = false
     },
@@ -51,4 +56,5 @@ function M.config()
     end,
   })
 end
+
 return M;

@@ -8,7 +8,7 @@ M.servers = {
   "bashls",
   "jsonls",
   "yamlls",
-  "eslint",
+  -- "eslint",
   "cssmodules_ls",
   "gopls",
   -- "jdtls"
@@ -22,7 +22,7 @@ M.ensure_installed = {
   "bashls",
   "jsonls",
   "yamlls",
-  "eslint",
+  -- "eslint",
   "cssmodules_ls",
   -- "gopls",
   "jdtls"

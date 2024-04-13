@@ -4,10 +4,7 @@ local M = {
   dependencies = {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
-    enabled =  vim.fn.executable("make") == 1,
-    config = function ()
-      require("telescope").load_extension("fzf")
-    end,
+    enabled = vim.fn.executable("make") == 1,
   }
 }
 
@@ -28,11 +25,20 @@ function M.config()
       },
     },
     pickers = {
-      live_grep = {debounce = 1000},
-      find_files = {debounce = 1000}
+      live_grep = { debounce = 1000 },
+      find_files = { debounce = 1000 }
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,                 -- false will only do exact matching
+        override_generic_sorter = true, -- override the generic sorter
+        override_file_sorter = true,  -- override the file sorter
+        case_mode = "ignore_case",     -- or "ignore_case" or "respect_case"
+        -- the default case_mode is "smart_case"
+      }
     }
   })
-
+  require("telescope").load_extension("fzf")
 end
 
 return M
