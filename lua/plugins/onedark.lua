@@ -6,8 +6,14 @@ return {
     require("onedarkpro").setup({
       highlights = {
         DashboardHeader = {
-          fg = colors.purple
-        }
+          fg = "#db4b4b"
+        },
+        DashboardKey = {
+          fg = colors.yellow
+        },
+        DashboardFooter = {
+          fg = "#7dcfff"
+        },
       }
     })
     vim.cmd.colorscheme "onedark"
