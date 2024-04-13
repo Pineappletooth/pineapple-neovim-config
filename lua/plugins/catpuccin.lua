@@ -42,6 +42,7 @@ return {
       integrations = {
         cmp = true,
         gitsigns = true,
+        dashboard= true,
         nvimtree = true,
         treesitter = true,
         notify = false,
