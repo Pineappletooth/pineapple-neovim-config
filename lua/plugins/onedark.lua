@@ -2,7 +2,7 @@ return {
   'olimorris/onedarkpro.nvim',
   priority = 100,
   config = function()
-    local colors = require("onedarkpro.helpers").get_colors("onedark")
+    local colors = require("onedarkpro.helpers").get_colors("onedark_dark")
     require("onedarkpro").setup({
       highlights = {
         DashboardHeader = {
@@ -12,10 +12,10 @@ return {
           fg = colors.yellow
         },
         DashboardFooter = {
-          fg = "#7dcfff"
+          fg = colors.blue
         },
       }
     })
-    vim.cmd.colorscheme "onedark"
+    vim.cmd.colorscheme "onedark_dark"
   end
 }

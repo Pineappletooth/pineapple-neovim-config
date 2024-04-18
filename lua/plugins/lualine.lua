@@ -1,5 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
+  enabled = true,
   event = { "VeryLazy" },
 }
 
@@ -46,7 +47,7 @@ function M.config()
     options = {
       globalstatus = true,
       icons_enabled = true,
-      theme = "auto",
+      theme = "horizon",
       disabled_filetypes = { "alpha", "dashboard" },
       always_divide_middle = true,
     },
