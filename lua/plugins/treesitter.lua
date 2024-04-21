@@ -38,7 +38,7 @@ function M.config()
     sync_install = false,                                                          -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
-      enable = true,       -- false will disable the whole extension
+      enable = false,       -- false will disable the whole extension
       disable = { "css" }, -- list of language that will be disabled
     },
     autopairs = {
