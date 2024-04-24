@@ -1,11 +1,12 @@
 return {
     'echasnovski/mini.base16',
     lazy = false,
+    enabled=false,
     priority = 40,
     config = function()
         local p = {
-            base00 = '#282c34',
-            base01 = '#353b45',
+            base00 = '#1d2026',
+            base01 = '#282c34',
             base02 = '#3e4451',
             base03 = '#545862',
             base04 = '#565c64',
@@ -21,28 +22,16 @@ return {
             base0E = '#c678dd',
             base0F = '#be5046'
         }
-        local c = {
-            base00 = '#112641',
-            base01 = '#3a475e',
-            base02 = '#606b81',
-            base03 = '#8691a7',
-            base04 = '#d5dc81',
-            base05 = '#e2e98f',
-            base06 = '#eff69c',
-            base07 = '#fcffaa',
-            base08 = '#ffcfa0',
-            base09 = '#cc7e46',
-            base0A = '#46a436',
-            base0B = '#9ff895',
-            base0C = '#ca6ecf',
-            base0D = '#42f7ff',
-            base0E = '#ffc4ff',
-            base0F = '#00a5c5',
-        }
         require('mini.base16').setup(
             {
-                palette = p
+                palette = p,
+                plugins = {
+                    [ 'lewis6991/gitsigns.nvim' ]= false
+                }
             }
         )
+        vim.api.nvim_set_hl(0,'SignColumn', {bg=p.base00})
+        vim.api.nvim_set_hl(0,'LineNr', {bg=p.base00})
+        vim.api.nvim_set_hl(0,'NormalFloat',{fg=p.base08})
     end
 }
