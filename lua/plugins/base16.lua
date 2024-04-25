@@ -25,6 +25,9 @@ return {
         vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = p.base08 })
         vim.api.nvim_set_hl(0, 'DashboardKey', { fg = p.base0A })
         vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = p.base0D })
+
+        vim.api.nvim_set_hl(0, 'EndOfBuffer', { fg = p.base00 })
+
         vim.defer_fn(function()
             vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = p.base08 })
             vim.api.nvim_set_hl(0, 'MarkSignNumHl', { fg = p.base08 })
