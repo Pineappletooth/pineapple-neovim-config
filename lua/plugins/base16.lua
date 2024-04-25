@@ -1,7 +1,7 @@
 return {
     'RRethy/base16-nvim',
     lazy = false,
-    priority = 40,
+    priority = 1000,
     config = function()
         local p = {
             base00 = '#1d2026',
@@ -30,6 +30,10 @@ return {
             vim.api.nvim_set_hl(0, 'MarkSignNumHl', { fg = p.base08 })
             vim.api.nvim_set_hl(0, 'LspReferenceRead', { bg = p.base02 })
             vim.api.nvim_set_hl(0, 'LspReferenceWrite', { bg = p.base02 })
+            vim.api.nvim_set_hl(0, 'Identifier', { fg = p.base0E })
+            vim.api.nvim_set_hl(0, 'Statement', { fg = p.base0E })
+            vim.api.nvim_set_hl(0, 'Repeat', { fg = p.base0E })
+            vim.api.nvim_set_hl(0, 'Structure', { fg = p.base08 })
         end, 500)
     end
 }

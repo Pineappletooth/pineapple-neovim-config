@@ -1,5 +1,6 @@
 return {
   'olimorris/onedarkpro.nvim',
+  enabled = false,
   priority = 100,
   config = function()
     local colors = require("onedarkpro.helpers").get_colors("onedark_dark")
