@@ -1,6 +1,7 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufEnter", "VeryLazy" },
+  lazy = false,
   init = function(plugin)
     -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
     -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
@@ -38,8 +39,7 @@ function M.config()
     sync_install = false,                                                          -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
-      enable = false,       -- false will disable the whole extension
-      disable = { "css" }, -- list of language that will be disabled
+      enable = true,       -- false will disable the whole extension
     },
     autopairs = {
       enable = true,

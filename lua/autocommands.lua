@@ -364,8 +364,8 @@ local function prevColor()
 
 end
 vim.api.nvim_create_user_command('TestColors', testColors, {})
-vim.keymap.set("n", "<C-K>", nextColor)
-vim.keymap.set("n", "<C-J>", prevColor)
+-- vim.keymap.set("n", "<C-K>", nextColor)
+-- vim.keymap.set("n", "<C-J>", prevColor)
 -- ayu mirage
 -- catpuccin
 -- horizon terminal
@@ -378,3 +378,9 @@ vim.keymap.set("n", "<C-J>", prevColor)
 -- roepinemoon
 -- tojyicirty ternubak dark
 -- tokyodark
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'GitConflictDetected',
+  callback = function()
+    vim.notify('Conflict detected in '..vim.fn.expand('<afile>'))
+  end
+})

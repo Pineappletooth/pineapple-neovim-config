@@ -2,7 +2,7 @@ return {
   "catppuccin/nvim",
   name = "catppuccin",
   priority = 100,
-  enabled = false,
+  enabled = true,
   config = function()
     require("catppuccin").setup({
       flavour = "macchiato", -- latte, frappe, macchiato, mocha

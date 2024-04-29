@@ -21,12 +21,20 @@ return {
             base0E = '#c678dd',
             base0F = '#be5046'
         }
+        require('base16-colorscheme').with_config({
+            -- cmp = true,
+        })
         require('colorscheme').setup(p)
         vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = p.base08 })
         vim.api.nvim_set_hl(0, 'DashboardKey', { fg = p.base0A })
         vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = p.base0D })
 
         vim.api.nvim_set_hl(0, 'EndOfBuffer', { fg = p.base00 })
+  -- vim.api.nvim_set_hl(0, 'ConflictMarkerBegin', { bg = p.base0B})
+  --     vim.api.nvim_set_hl(0, 'ConflictMarkerOurs' , { bg = p.base08 })
+  --     vim.api.nvim_set_hl(0, 'ConflictMarkerTheirs' , { bg = p.base0B })
+  --     vim.api.nvim_set_hl(0, 'ConflictMarkerEnd' , { bg = p.base08 })
+  --     vim.api.nvim_set_hl(0,'ConflictMarkerCommonAncestorsHunk' , { bg = p.base0D })
 
         vim.defer_fn(function()
             vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = p.base08 })
