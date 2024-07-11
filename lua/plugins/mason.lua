@@ -22,8 +22,9 @@ local settings = {
   max_concurrent_installers = 4,
 }
 
-function M.config()
-  require("mason").setup(settings)
+function M.config(_, opts)
+  local conf = vim.tbl_deep_extend('keep', opts, settings)
+  require("mason").setup(conf)
   require("mason-lspconfig").setup {
     ensure_installed = require("lsp_servers").ensure_installed,
     automatic_installation = true,

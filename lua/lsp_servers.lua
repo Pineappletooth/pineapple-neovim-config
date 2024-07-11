@@ -11,6 +11,7 @@ M.servers = {
   -- "eslint",
   "cssmodules_ls",
   "gopls",
+  "cds-lsp"
   -- "jdtls"
 }
 M.ensure_installed = {
@@ -25,7 +26,8 @@ M.ensure_installed = {
   -- "eslint",
   "cssmodules_ls",
   -- "gopls",
-  "jdtls"
+  "jdtls",
+  "cds-lsp"
 }
 
 M.treesitter = {
