@@ -1,6 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
-  enabled = true,
+  enabled = false,
   event = { "VeryLazy" },
 }
 
@@ -20,28 +20,28 @@ end
 
 function M.config()
 
-local color = require('base16-colorscheme').colors
-local colors = {
-  red = color.base01,
-  grey = '#a0a1a7',
-  black = '#383a42',
-  white = '#f3f3f3',
-  light_green = '#83a598',
-  orange = '#fe8019',
-  green = '#8ec07c',
-}
+  local color = require('base16-colorscheme').colors
+  local colors = {
+    red = color.base01,
+    grey = '#a0a1a7',
+    black = '#383a42',
+    white = '#f3f3f3',
+    light_green = '#83a598',
+    orange = '#fe8019',
+    green = '#8ec07c',
+  }
 
-local theme = {
-  normal = {
-    a = { fg = colors.white, bg = color.base08 },
-    b = { fg = colors.black, bg = color.base06 },
-    c = { fg = colors.white, bg = color.base03 },
-    z = { fg = colors.white, bg = color.base08 },
-  },
-  insert = { a = { fg = colors.black, bg = color.base0B } },
-  visual = { a = { fg = colors.black, bg = color.base09 } },
-  replace = { a = { fg = colors.black, bg = color.base0D } },
-}
+  local theme = {
+    normal = {
+      a = { fg = colors.white, bg = color.base08 },
+      b = { fg = colors.black, bg = color.base06 },
+      c = { fg = colors.white, bg = color.base03 },
+      z = { fg = colors.white, bg = color.base08 },
+    },
+    insert = { a = { fg = colors.black, bg = color.base0B } },
+    visual = { a = { fg = colors.black, bg = color.base09 } },
+    replace = { a = { fg = colors.black, bg = color.base0D } },
+  }
 
   local icons = require("icons")
   local status_ok, lualine = pcall(require, "lualine")

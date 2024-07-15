@@ -8,25 +8,18 @@ function M.config()
   wk.setup {
     triggers_nowait = {},
   }
-  wk.register({
-    f = { name = "Telescope" },
-    b = { name = "Buffers" },
-    d = { name = "dap" },
-    l = { name = "lsp" },
-    q = { name = "session" },
-    G = {
-      name = "git",
-      c = "Resolve conflits",
-    },
-    x = { name = "quickfix" }
-  }, { prefix = "<leader>", })
-
-  wk.register({
-    g = {
-      q = "format with formatexpr",
-      w = "format"
-    }
-  })
+  wk.add {
+    { "<leader>G", group = "git" },
+    { "<leader>Gc", desc = "Resolve conflits" },
+    { "<leader>b", group = "Buffers" },
+    { "<leader>d", group = "dap" },
+    { "<leader>f", group = "Telescope" },
+    { "<leader>l", group = "lsp" },
+    { "<leader>q", group = "session" },
+    { "<leader>x", group = "quickfix" },
+    { "gq", group = "format with formatexpr" },
+    { "gw", group = "format" },
+  }
 end
 
 return M

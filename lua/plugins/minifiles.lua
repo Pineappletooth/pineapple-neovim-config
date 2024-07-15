@@ -5,7 +5,7 @@ local M = {
   command = { "Minifiles", "MinifilesCwd" },
   keys = {
     { "<leader>m", function() vim.cmd "Minifiles" end },
-    { "<leader>m", function() vim.cmd "MinifilesCwd" end }
+    { "<leader>M", function() vim.cmd "MinifilesCwd" end }
   },
 
 }
