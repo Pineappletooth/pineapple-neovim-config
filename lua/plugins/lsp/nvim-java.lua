@@ -22,6 +22,6 @@ return {
   },
   config = function()
     require('java').setup()
-    require('lspconfig').jdtls.setup()
+    require('lspconfig').jdtls.setup({})
   end
 }
