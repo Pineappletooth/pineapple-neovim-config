@@ -5,9 +5,6 @@ local M = {
 
 function M.config()
   local wk = require("which-key")
-  wk.setup {
-    triggers_nowait = {},
-  }
   wk.add {
     { "<leader>G", group = "git" },
     { "<leader>Gc", desc = "Resolve conflits" },
