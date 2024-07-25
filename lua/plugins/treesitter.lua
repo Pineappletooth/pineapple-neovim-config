@@ -32,14 +32,29 @@ function M.config()
   local configs = require "nvim-treesitter.configs"
   require('ts_context_commentstring').setup {}
   require 'nvim-treesitter.install'.compilers = { "clang" }
+  local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+  parser_config.cds = {
+    install_info = {
+      -- local path or git repo
+      -- url = '/path/to/tree-sitter-cds',
+      url = 'https://github.com/cap-js-community/tree-sitter-cds.git',
+      files = { 'src/parser.c', 'src/scanner.c' },
+      branch = 'main',
+      generate_requires_npm = false,
+      requires_generate_from_grammar = false
+    },
+    filetype = 'cds',
+    -- additional filetypes that use this parser
+    used_by = { 'cdl', 'hdbcds' }
+  }
   configs.setup {
     ensure_installed = require("lsp_servers").treesitter, -- put the language you want in this array
     -- ensure_installed = "all", -- one of "all" or a list of languages
-    ignore_install = { "" },                                                       -- List of parsers to ignore installing
-    sync_install = false,                                                          -- install languages synchronously (only applied to `ensure_installed`)
+    ignore_install = { "" },                              -- List of parsers to ignore installing
+    sync_install = false,                                 -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
-      enable = true,       -- false will disable the whole extension
+      enable = true, -- false will disable the whole extension
     },
     autopairs = {
       enable = true,
@@ -73,7 +88,7 @@ function M.config()
         },
         selection_modes = {
           ['@parameter.outer'] = 'v', -- charwise
-          ['@function.outer'] = 'V', -- linewise
+          ['@function.outer'] = 'V',  -- linewise
           ['@class.outer'] = '<c-v>', -- blockwise
         },
         include_surrounding_whitespace = false,

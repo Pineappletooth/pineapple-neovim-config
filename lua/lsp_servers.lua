@@ -11,7 +11,7 @@ M.servers = {
   -- "eslint",
   "cssmodules_ls",
   "gopls",
-  -- "cds-lsp"
+  "cds_lsp"
   -- "jdtls"
 }
 M.ensure_installed = {
@@ -39,7 +39,8 @@ M.treesitter = {
   "typescript",
   "javascript",
   "tsx",
-  "vimdoc"
+  "vimdoc",
+  "cds"
 }
 
 return M
