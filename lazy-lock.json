@@ -61,6 +61,7 @@
   "persisted.nvim": { "branch": "main", "commit": "4df3f8a03690add1bc2f9a79b31e1c43f5e0dd05" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
+  "rainbow_csv.nvim": { "branch": "main", "commit": "7f3fddfe813641035fac2cdf94c2ff69bb0bf0b9" },
   "spring-boot.nvim": { "branch": "main", "commit": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0" },
   "staline.nvim": { "branch": "main", "commit": "d337bc9b343df3328921ef4c3f8ff604102d0201" },
   "statuscol.nvim": { "branch": "main", "commit": "d6f7f5437c5404d958b88bb73e0721b1c0e09223" },
