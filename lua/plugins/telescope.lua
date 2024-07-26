@@ -1,15 +1,20 @@
+local function detect_build_command()
+  if vim.fn.executable("make") == 1 then
+    return "make"
+  elseif  vim.fn.executable("mingw32-make") == 1 then
+    return "mingw32-make"
+  elseif vim.fn.executable("cmake") == 1 then
+    return "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+  end
+  return ""
+end
+
 local M = {
+{
   "nvim-telescope/telescope.nvim",
   cmd = { "Telescope" },
-  dependencies = {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    enabled = vim.fn.executable("make") == 1,
-  }
-}
-
-function M.config()
-  local actions = require "telescope.actions"
+  config = function ()
+     local actions = require "telescope.actions"
   require('telescope').setup({
     defaults = {
       prompt_prefix = " ",
@@ -38,7 +43,22 @@ function M.config()
       }
     }
   })
-  require("telescope").load_extension("fzf")
-end
+
+  end,
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+    },
+    build = detect_build_command(),
+    enabled = detect_build_command() ~= "",
+    config = function ()
+      require("telescope").load_extension("fzf")
+    end
+  }
+
+}
+
 
 return M
