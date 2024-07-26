@@ -87,9 +87,6 @@ vim.api.nvim_create_autocmd({ 'FileChangedShellPost' }, {
   command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
 })
 
---vim.cmd[[set list]]
---vim.cmd[[colorscheme tokyonight-night]]
-
 vim.api.nvim_create_autocmd('User', {
   pattern = 'GitConflictDetected',
   callback = function()

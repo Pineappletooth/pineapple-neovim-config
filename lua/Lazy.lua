@@ -17,7 +17,13 @@ require("lazy").setup({
   { import = "plugins" }, { import = "plugins.lsp" }
 }, {
   install = { colorscheme = { "tokyonight" } },
-  defaults = { lazy = false, version = false },
+  colorscheme = function()
+    -- require("tokyonight").load()
+  end,
+  defaults = {
+    lazy = false,
+    version = false,
+  },
   ui = { wrap = "true" },
   change_detection = { enabled = false },
   debug = false,
@@ -53,7 +59,7 @@ require("lazy").setup({
       },
     },
   },
-    profiling = {
+  profiling = {
     -- Enables extra stats on the debug tab related to the loader cache.
     -- Additionally gathers stats about all package.loaders
     loader = false,

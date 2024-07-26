@@ -98,9 +98,6 @@ keymap("n", "<leader>*", "*N", opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
-keymap("n", "<leader>n", ":Minimap<CR>", { desc = "MiniMap toggle" })
-keymap("n", "<leader>N", ":MinimapFocus<CR>", { desc = "MiniMap focus" })
-
 -- Telescope <C-q> to send search to quickfix
 keymap("n", "<leader>ft", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fF", ":Telescope live_grep<CR>", opts)
@@ -129,10 +126,6 @@ keymap("n", "<leader>Gcb", "<cmd>ConflictMarkerBoth<CR>", opts)
 keymap("n", "<leader>gw", "<cmd>cd %:h <CR>", { desc = "Change CWD to current"})
 keymap("n", "<leader>gc", "<cmd>e $MYVIMRC<CR>", { desc = "Go to config"})
 
--- Comment
-keymap("n", "<leader>}", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>}", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
-
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
 keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
@@ -157,7 +150,6 @@ keymap("n", "g{", "<cmd>cprev<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", {desc = "Format file (use = to single line)"})
-keymap("n", "<leader>ln", "<cmd>Navbuddy<cr>", opts)
 
 keymap("n", "<leader><space>", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>bl", "<cmd>bl<CR>", { desc = "next buffer" })
@@ -192,16 +184,6 @@ keymap("n", "<leader>ghp", "<cmd>Gitsigns preview_hunk", { desc = "Preview Hunk"
 keymap("n", "<leader>ghb", "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", { desc = "Blame Line" })
 keymap("n", "<leader>ghd", "<cmd>Gitsigns diffthis", { desc = "Diff This" })
 keymap("n", "<leader>ghD", "<cmd>lua require'gitsigns'.diffthis('~')<CR>", { desc = "Diff This ~" })
-keymap({'n', 'v', 'o'}, '°',"_<cmd>lua require('tree-climber').goto_parent({skip_comments = true})<cr>_", {silent = true, desc="goto parent"})
-
-keymap({'n', 'v', 'o'}, '|', "g_<cmd>lua require('tree-climber').goto_child({skip_comments = true})<cr>_", {silent = true, desc="goto child"})
-keymap({'n', 'v', 'o'}, '<tab>',"_<cmd>lua require('tree-climber').goto_next({skip_comments = true})<cr>", {silent = true, desc="goto next"})
-keymap({'n', 'v', 'o'}, '<S-TAB>',"_<cmd>lua require('tree-climber').goto_prev({skip_comments = true})<cr>", {silent = true, desc="goto prev"})
-keymap({'v', 'o'}, 'in', "<cmd>lua require('tree-climber').select_node()<cr>", {silent = true, desc="select node"})
-keymap('n', '<c-t>', "<cmd>lua require('tree-climber').swap_prev()<cr>", {silent=true, desc="swap prev"})
-keymap('n', '<c-y>', "<cmd>lua require('tree-climber').swap_next()<cr>", {silent=true, desc="swap next"})
-keymap('n', '<leader><tab>', "<cmd>lua require('tree-climber').highlight_node()<cr>", {silent = true, desc="highlight node"})
---tests
 
 keymap("n","<leader>tr", function()require("neotest").run.run() end, {silent=true, desc="run nearest test"})
 keymap("n","<leader>tf", function()require("neotest").run.run(vim.fn.expand("%")) end, {silent=true, desc="run current file"})
