@@ -8,11 +8,8 @@ M.servers = {
   "bashls",
   "jsonls",
   "yamlls",
-  -- "eslint",
   "cssmodules_ls",
   "gopls",
-  -- "cds-lsp"
-  -- "jdtls"
 }
 M.ensure_installed = {
   "lua_ls",
@@ -23,11 +20,8 @@ M.ensure_installed = {
   "bashls",
   "jsonls",
   "yamlls",
-  -- "eslint",
   "cssmodules_ls",
-  -- "gopls",
   "jdtls",
-  -- "cds-lsp"
 }
 
 M.treesitter = {
