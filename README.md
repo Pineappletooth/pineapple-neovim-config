@@ -2,10 +2,48 @@
 
 > This is a fork of https://github.com/LunarVim/nvim-basic-ide with some extra features, mappings and with updated dependencies
 
+## First steps
+
+For the setup the following requirements are needed
+
+- Neovim >= **0.9.0** 
+- Git 
+- a terminal that support true color and undercurl, [Kitty](https://github.com/kovidgoyal/kitty) for macOS/Linux and for windows [Windows terminal](https://github.com/microsoft/terminal)
+- a [Nerd Font](https://www.nerdfonts.com/)
+- a **C** compiler for `nvim-treesitter`. See [here](https://github.com/nvim-treesitter/nvim-treesitter#requirements)
+- Ripgrep for live search [github](https://github.com/BurntSushi/ripgrep)
+- Fd for finding files [github](https://github.com/sharkdp/fd) 
+
+**Installation for windows**
+
+Run the following commands:
+
+```sh
+winget install -e --id Microsoft.WindowsTerminal
+winget install --id=Neovim.Neovim  -e
+winget install --id=sharkdp.fd  -e
+winget install --id=BurntSushi.ripgrep.MSVC  -e
+```
+For a nerdfont download it from their webpage [Nerd Font](https://www.nerdfonts.com/) jetbrainsmono or firacode are recommended, install the font and then in windows terminal settings set the font.
+
+warning for the font set the non mono version as those include the icons with the correct size, for example do not install jetbrainsmono mono, instead install jetbrainsmono.
+
+For the C compiler llvm-mingw will be needed [it can be obtained here](https://github.com/mstorsjo/llvm-mingw/releases)
+
+unzip in a folder *then add the bin folder to the path*
+
+****
+For MacOS:
+```sh
+brew install neovim
+#TODO
+```
+
 ## Install the config
 
 Make sure to remove or backup your current `nvim` directory
 
+clone the repo in the AppData/Local/nvim folder for windows or in the ~/.config/nvim for Unix based Os
 ```sh
 git clone https://github.com/Pineappletooth/pineapple-neovim-config.git ~/.config/nvim
 ```
@@ -16,64 +54,15 @@ Run `nvim` and wait for the plugins to be installed
 
 **NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/Pineappletooth/pineapple-neovim-config/tree/master/lua/keymaps.lua)
 
-## Get healthy
+## Validate your installation
 
 Open `nvim` and enter the following:
 
 ```
 :checkhealth
 ```
+If there are no errors here everything is good
 
-You'll probably notice you don't have support for copy/paste also that python and node haven't been setup
-
-So let's fix that
-
-First we'll fix copy/paste
-
-- On mac `pbcopy` should be builtin
-
-- On Ubuntu
-
-  ```sh
-  sudo apt install xsel # for X11
-  sudo apt install wl-clipboard # for wayland
-  ```
-
-- On windows works flawesly
-
-Next we need to install python support (node is optional)
-
-- Neovim python support
-
-  ```sh
-  pip install pynvim
-  ```
-
-- Neovim node support
-
-  ```sh
-  npm i -g neovim
-  ```
-
-We will also need `ripgrep` for Telescope to work:
-
-- Ripgrep
-
-  ```sh
-  sudo apt install ripgrep
-  ```
-
-For windows it's neccesary to download the [binary](https://github.com/BurntSushi/ripgrep/releases) and add it to the path
-
----
-
-**NOTE** make sure you have [node](https://nodejs.org/en/) installed, I recommend a node manager like [fnm](https://github.com/Schniz/fnm).
-
-## Fonts
-
-I recommend using the following repo to get a "Nerd Font" (Font that supports icons)
-
-[getnf](https://github.com/ronniedroid/getnf)
 
 ## Configuration
 
