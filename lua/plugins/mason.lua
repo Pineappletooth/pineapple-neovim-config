@@ -26,8 +26,9 @@ function M.config(_, opts)
   local conf = vim.tbl_deep_extend('keep', opts, settings)
   require("mason").setup(conf)
   require("mason-lspconfig").setup {
-    ensure_installed = require("installed_languages").ensure_installed,
+--    ensure_installed = require("installed_languages").ensure_installed,
     automatic_installation = true,
+    automatic_activation = true
   }
 end
 

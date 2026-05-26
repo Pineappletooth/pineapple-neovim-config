@@ -5,7 +5,7 @@ vim.api.nvim_create_user_command('MinimapFocus',function()
   MiniMap.toggle_focus()
 end,{})
 return {
-  'echasnovski/mini.map',
+  'nvim-mini/mini.map',
   command={"Minimap", "MinimapFocus"},
   config = function()
     require('mini.map').setup({

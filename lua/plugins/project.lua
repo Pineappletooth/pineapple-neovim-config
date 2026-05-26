@@ -1,7 +1,7 @@
 local M = {
   "ahmedkhalf/project.nvim",
   lazy = false,
-  enabled = true,
+  enabled = false,
 }
 
 function M.config()
@@ -19,9 +19,6 @@ function M.config()
     silent_chdir = true,
     scope_chdir = "global",
   }
-
-  local telescope = require "telescope"
-  telescope.load_extension "projects"
 end
 
 return M

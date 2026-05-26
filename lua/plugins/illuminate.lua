@@ -1,5 +1,6 @@
 local M = {
   "RRethy/vim-illuminate",
+  disabled = true,
   event = "BufEnter",
 }
 

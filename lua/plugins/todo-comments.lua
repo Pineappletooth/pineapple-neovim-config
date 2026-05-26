@@ -1,7 +1,7 @@
 local M = {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  cmd = { "TodoTrouble", "TodoTelescope" },
+  cmd = { "TodoTrouble", "TodoFzfLua" },
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     -- your configuration comes here

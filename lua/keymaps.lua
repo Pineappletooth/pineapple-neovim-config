@@ -24,6 +24,84 @@ local function toggle_qf()
   end
 end
 
+Pick = function()
+    local fzf_lua = require("fzf-lua")
+    local project = require("project_nvim.project")
+    local history = require("project_nvim.utils.history")
+    local results = history.get_recent_projects()
+    local utils = require("fzf-lua.utils")
+
+    local function hl_validate(hl)
+      return not utils.is_hl_cleared(hl) and hl or nil
+    end
+
+    local function ansi_from_hl(hl, s)
+      return utils.ansi_from_hl(hl_validate(hl), s)
+    end
+
+    local opts = {
+      fzf_opts = {
+        ["--header"] = string.format(
+          ":: <%s> to %s | <%s> to %s | <%s> to %s | <%s> to %s | <%s> to %s",
+          ansi_from_hl("FzfLuaHeaderBind", "ctrl-t"),
+          ansi_from_hl("FzfLuaHeaderText", "tabedit"),
+          ansi_from_hl("FzfLuaHeaderBind", "ctrl-s"),
+          ansi_from_hl("FzfLuaHeaderText", "live_grep"),
+          ansi_from_hl("FzfLuaHeaderBind", "ctrl-r"),
+          ansi_from_hl("FzfLuaHeaderText", "oldfiles"),
+          ansi_from_hl("FzfLuaHeaderBind", "ctrl-w"),
+          ansi_from_hl("FzfLuaHeaderText", "change_dir"),
+          ansi_from_hl("FzfLuaHeaderBind", "ctrl-d"),
+          ansi_from_hl("FzfLuaHeaderText", "delete")
+        ),
+      },
+      fzf_colors = true,
+      actions = {
+        ["default"] = {
+          function(selected)
+            fzf_lua.files({ cwd = selected[1] })
+          end,
+        },
+        ["ctrl-t"] = {
+          function(selected)
+            vim.cmd("tabedit")
+            fzf_lua.files({ cwd = selected[1] })
+          end,
+        },
+        ["ctrl-s"] = {
+          function(selected)
+            fzf_lua.live_grep({ cwd = selected[1] })
+          end,
+        },
+        ["ctrl-r"] = {
+          function(selected)
+            fzf_lua.oldfiles({ cwd = selected[1] })
+          end,
+        },
+        ["ctrl-w"] = {
+          function(selected)
+            local path = selected[1]
+            local ok = project.set_pwd(path)
+            if ok then
+              vim.api.nvim_win_close(0, false)
+              LazyVim.info("Change project dir to " .. path)
+            end
+          end,
+        },
+        ["ctrl-d"] = function(selected)
+          local path = selected[1]
+          local choice = vim.fn.confirm("Delete '" .. path .. "' project? ", "&Yes\n&No")
+          if choice == 1 then
+            history.delete_project({ value = path })
+          end
+          Pick()
+        end,
+      },
+    }
+
+    fzf_lua.fzf_exec(results, opts)
+  end
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -102,19 +180,21 @@ keymap("n", "<leader>n", ":Minimap<CR>", { desc = "MiniMap toggle" })
 keymap("n", "<leader>N", ":MinimapFocus<CR>", { desc = "MiniMap focus" })
 
 -- Telescope <C-q> to send search to quickfix
-keymap("n", "<leader>ft", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fF", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>ff", ":Telescope current_buffer_fuzzy_find<CR>", opts)
-keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
-keymap("n", "<leader>fD", ":Telescope diagnostics", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>fl", ":Telescope lsp_references<CR>", opts)
-keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", { desc = "Recent", silent = true })
-keymap("n", "<leader>fr", ":Telescope resume<CR>", { desc = "Resume last search", silent = true })
-keymap("n", "<leader>fm", ":Telescope marks<CR>", { desc = "marks", silent = true })
-keymap("n", "<leader>fgs", ":Telescope git_status<CR>", opts)
-keymap("n", "<leader>fgc", ":Telescope git_commits<CR>", opts)
+keymap("n", "<leader><space>", ":FzfLua files<CR>", opts)
+keymap("n", "<leader>s", ":FzfLua grep_cword<CR>", { desc = "Grep string" })
+keymap("n", "<leader>ff", ":FzfLua lgrep_curbuf<CR>", { desc = "Grep string" })
+keymap("n", "<leader>/", ":FzfLua live_grep<CR>", { desc = "Live grep" })
+keymap("n", "<leader>ft", ":FzfLua files<CR>", opts)
+keymap("n", "<leader>fF", ":FzfLua files<CR>", opts)
+keymap("n", "<leader>fb", ":FzfLua buffers<CR>", opts)
+keymap("n", "<leader>fo", ":FzfLua oldfiles<CR>", { desc = "Recent", silent = true })
+keymap("n", "<leader>fr", ":FzfLua resume<CR>", { desc = "Resume last search", silent = true })
+keymap("n", "<leader>fm", ":FzfLua marks<CR>", { desc = "marks", silent = true })
+keymap("n", "<leader>fq", ":FzfLua quickfix<CR>", { desc = "quickfix", silent = true })
+keymap("n", "<leader>fgs", ":FzfLua git_status<CR>", opts)
+keymap("n", "<leader>fgc", ":FzfLua git_commits<CR>", opts)
+keymap("n", "<leader>fgd", ":FzfLua git_diff<CR>", opts)
+keymap("n", "<Space>p", Pick, opts)
 
 -- Git
 keymap("n", "<leader>Gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -159,7 +239,6 @@ keymap("n", "g{", "<cmd>cprev<cr>", opts)
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", {desc = "Format file (use = to single line)"})
 keymap("n", "<leader>ln", "<cmd>Navbuddy<cr>", opts)
 
-keymap("n", "<leader><space>", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>bl", "<cmd>bl<CR>", { desc = "next buffer" })
 keymap("n", "<leader>bp", "<cmd>bp<CR>", { desc = "previous buffer", silent = true })
 keymap("n", "<leader>bd", "<cmd>BufDel<CR>", { desc = "delete current buffer", silent = true })
@@ -168,10 +247,6 @@ keymap("n", "<leader>bb", "<cmd>BufDelOthers<CR>", { desc = "delete all except b
 keymap("n", "<leader>k", "<cmd>WhichKey<CR>", { desc = "show all keymaps", silent = true })
 keymap("n", "<leader>r", "<cmd>set rnu!<CR>", { desc = "Toggle RNU" })
 keymap("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true })
-keymap("n", "<leader>s", "<cmd>Telescope grep_string<CR>", { desc = "Grep string" })
-keymap("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", { desc = "Grep string" })
-keymap("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
-
 -- restore the session for the current directory
 keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]],
   { desc = "restore current directory session" })
@@ -210,4 +285,13 @@ keymap("n","<leader>ts", function()require("neotest").run.stop() end, {silent=tr
 keymap("n","<leader>ta", function()require("neotest").run.attach() end, {silent=true, desc="attach test"})
 keymap("n","<leader>tp", function()require("neotest").output_panel.toggle() end, {silent=true, desc="open output pannel"})
 keymap("n","<leader>ts", function()require("neotest").summary.toggle() end, {silent=true, desc="open summary pannel"})
+
+keymap("n", "<leader>hh", "<cmd>NvimHttpYac<CR>", descOpts("Execute request under cursor"))
+keymap("n", "<leader>ha", "<cmd>NvimHttpYacAll<CR>", descOpts("Execute all requests in buffer"))
+keymap("n", "<leader>hp", "<cmd>NvimHttpYacPicker<CR>", descOpts("Pick a named request"))
+keymap("n", "<leader>he", "<cmd>NvimHttpYacEnv<CR>", descOpts("Select environment"))
+keymap("n", "<leader>hE", "<cmd>NvimHttpYacEnvClear<CR>", descOpts("Clear active environment"))
+keymap("n", "<leader>hs", "<cmd>NvimHttpYacSequence<CR>", descOpts("Toggle sequence recording"))
+keymap("n", "<leader>hS", "<cmd>NvimHttpYacSequencePicker<CR>", descOpts("Browse saved sequences"))
+
 

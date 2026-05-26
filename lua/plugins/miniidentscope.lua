@@ -1,5 +1,5 @@
 local M = {
-  "echasnovski/mini.indentscope",
+  "nvim-mini/mini.indentscope",
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     symbol = "│",
